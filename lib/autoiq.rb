@@ -3,7 +3,7 @@ module Autoiq
     
     def access_token(renew=false)
       Rails.cache.delete([self, "access_token"]) if renew
-      Rails.cache.fetch([self, "access_token"]) { get_access_token_from_edmunds }
+      Rails.cache.fetch([self, "access_token"], :expires_in => 1.hour) { get_access_token_from_edmunds }
     end
     
     def inventory_by_zipcode(opts={})
