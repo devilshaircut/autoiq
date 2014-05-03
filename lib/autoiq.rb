@@ -28,6 +28,14 @@ module Autoiq
       end
     end
     
+    def inventory_link(inventory, opts={})
+      "http://www.edmunds.com/inventory/vin.html?" + 
+      "make=#{inventory[:make]}&" + 
+      "inventoryId=#{inventory[:inventoryId]}&" + 
+      "zip=#{opts[:zipcode]}&" + 
+      "radius=#{opts[:radius]}"
+    end
+    
     private
     def get_access_token_from_edmunds
       request = Typhoeus::Request.new(
