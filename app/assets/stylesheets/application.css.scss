@@ -8,32 +8,67 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require main
  *= require_tree ./components
+ *= require_self
  */
 
 
+auto-graph{
+  text-transform:uppercase;
+  color: #ffffff; 
+  text{
+    stroke: #ffffff;
+  } 
+  
+  svg{
+    background-color: rgb(246, 95, 88);
+  }
+
+  h1{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+
+
 path.plotline {
-  stroke: steelblue;
+  stroke: rgb(215, 62, 56);
   stroke-width: 3;
   fill: none;
 }
 
 path.area{
-  opacity: 0.3;
+  fill: rgb(244, 70, 63);
 }
 
 circle.circle{
   stroke: white;
   stroke-width: 4;
+  fill: rgb(197, 43, 35);
+}
+
+.verticalGrid{
+  opacity: 0.1;
+  stroke-width: 3;
+  stroke: #ffffff;
+  fill: none;
 }
 
 .tooltip{
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   position: absolute;
-  width: 120px;
-  padding: 3px;
-  background: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  div{
+    font-weight: bold;
+    font-size: 30px;
+  }
 }
 .tooltip:after {
   bottom: 100%;
@@ -45,16 +80,16 @@ circle.circle{
   position: absolute;
   pointer-events: none;
   border-color: rgba(0, 0, 0, 0);
-  border-bottom-color: rgba(0, 0, 0, 0.1);
+  border-bottom-color: rgba(0, 0, 0, 0.3);
   border-width: 10px;
   margin-left: -10px;
 }
 
 .selltip{
   position: absolute;
-  padding: 3px;
-  background: rgba(0, 0, 0, 0.1); 
-  width: 160px;
+  padding: 3px 15px;
+  background: rgba(0, 0, 0, 0.3); 
+  font-size: 12px;
 }
 
 .selltip:after {
@@ -67,12 +102,11 @@ circle.circle{
   position: absolute;
   pointer-events: none;
   border-color: rgba(0, 0, 0, 0);
-  border-right-color: rgba(0, 0, 0, 0.1);
-  border-bottom-color: rgba(0, 0, 0, 0.1);
+  border-right-color: rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(0, 0, 0, 0.3);
   border-width: 6px;
   margin-top: -12px;
 }
-
 
 
 
