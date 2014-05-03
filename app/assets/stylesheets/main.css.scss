@@ -432,22 +432,33 @@ ol.ns-module-triple {
 main#ns-home {
   height: 100%;
   background: $color-red-medium;
-  > h1 {
-    width: 100%;
-    font-size: 48px;
-    line-height: 60px;
-    color: $white;
-    font-weight: 200;
-    text-align: center;
-    text-transform: uppercase;
-  }
   #ns-home-container {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    height: 300px;
+    position: relative;
+    top: 50%;
+    @include translateY(-66%);
     @include span-columns(18 omega, 18);
+    > h1 {
+      width: 100%;
+      margin: 0 0 58px 0;
+      font-size: 48px;
+      line-height: 60px;
+      color: $white;
+      font-weight: 200;
+      text-align: center;
+      text-transform: uppercase;
+    }
     > .ns-button.ns-button-red.ns-button-cta {
       text-align: center;
       @include span-columns(5, 18);
     }
+    > img#ns-buyer-pic,
     > img#ns-seller-pic {
+      position: relative;
+      top: -150px;
       @include span-columns(4, 18);
     }
     > img#ns-buyer-pic {

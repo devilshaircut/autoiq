@@ -8,8 +8,7 @@ input[type="reset"],
 button {
   display: inline-block;
   padding: 9px 20px 11px 20px;
-  margin: 0;
-  border-bottom: 1px solid $color-yellow-dark;
+  margin: 0;  
   color: $white;
   background: $color-yellow-dark;
   font-size: $font-body-text-size;
@@ -23,6 +22,7 @@ button {
   -webkit-appearance: none;
   @include box-sizing(border-box);
   @include border-radius(5px);
+  @include box-shadow(0 -5px 0 $color-yellow-dark inset);
 }
 
 .ns-button:active,
@@ -71,7 +71,7 @@ input[type="reset"].ns-button-red,
 button.ns-button-red {
   background: $color-red-light;
   color: $white;
-  border-bottom: 5px solid $color-red-dark;
+  @include box-shadow(0 -5px 0 $color-red-dark inset);
 }
 
 .ns-button.ns-button-cta,
@@ -79,6 +79,7 @@ input[type="submit"].ns-button-cta,
 input[type="button"].ns-button-cta,
 input[type="reset"].ns-button-cta,
 button.ns-button-cta {
+  padding: 31px 20px 44px 20px;
   text-transform: uppercase;
   font-size: 72px;
   line-height: 80px;
