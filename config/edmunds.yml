@@ -1,0 +1,10 @@
+defaults: &defaults
+  client_key: cecrkkbddkceadtcf75he29n
+  client_secret: VQxZxYCGXWnb4y49FhMP8mxY
+  endpoint: https://api.edmunds.com
+  
+production: &production
+  << : *defaults
+  
+development: &development
+  << : *defaults
