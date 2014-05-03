@@ -3,10 +3,35 @@ AngularApp.config(function($routeProvider, $locationProvider) {
     templateUrl: '<%= asset_path("index.html") %>',
     activetab: 'index'
   }).
-  when('/graph', {
-    templateUrl: '<%= asset_path("graph.html") %>',
-    controller: 'graphController',
-    activetab: 'index'
+  when('/summary', {
+    templateUrl: '<%= asset_path("summary.html") %>',
+    controller: 'summaryController',
+    activetab: 'summary'
+  }).
+  when('/sell', {
+    templateUrl: '<%= asset_path("sell.html") %>',
+    controller: 'sellController',
+    activetab: 'sell'
+  }).
+  when('/catalog', {
+    templateUrl: '<%= asset_path("catalog.html") %>',
+    controller: 'catalogController',
+    activetab: 'catalog'
+  }).
+  when('/faq', {
+    templateUrl: '<%= asset_path("faq.html") %>',
+    controller: 'faqController',
+    activetab: 'faq'
+  }).
+  when('/about', {
+    templateUrl: '<%= asset_path("about.html") %>',
+    controller: 'aboutController',
+    activetab: 'about'
+  }).
+  when('/login', {
+    templateUrl: '<%= asset_path("login.html") %>',
+    controller: 'loginController',
+    activetab: 'login'
   }).
   otherwise({
     templateUrl: '<%= asset_path("index.html") %>',
