@@ -15,7 +15,7 @@ module Autoiq
       body = ""
       opts.each{ |k,v| body += "#{k}=#{v}&"}      
       request = Typhoeus::Request.new(
-        EDMUNDS_ENDPOINT + '/api/inventory/v1/getall?' + body[0..-2],
+        EDMUNDS_ENDPOINT + '/api/inventory/v1/getall?' + body + "basicFilter=make:%22#{opts[:make]}%22",
         method: :get,
         headers: { "Authorization" => "Bearer " + self.access_token }
       )
@@ -35,6 +35,14 @@ module Autoiq
       "inventoryId=#{inventory[:inventoryId]}&" + 
       "zip=#{opts[:zipcode]}&" + 
       "radius=#{opts[:radius]}"
+    end
+    
+    def find_photos(style_id)
+      response = Typhoeus::Request.new(
+        EDMUNDS_ENDPOINT + '/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=' + style_id + '&api_key=' + EDMUNDS_CLIENT_KEY,
+        method: :get,
+      ).run
+      JSON.parse(response.body, :symbolize_names => true)
     end
     
     private
