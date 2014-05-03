@@ -18,9 +18,11 @@ $(document).ready(function() {
     // Show or hide the top bar background.
     if ( $(window).scrollTop() > 0 ) {
       $("nav.ns-section-main").addClass("ns-nav-shadow-state");
+      $("ol#ns-section-selector").addClass("ns-section-shadow-state");
     }
     else if ( $(window).scrollTop() <= 0 ) {
       $("nav.ns-section-main").removeClass("ns-nav-shadow-state");
+      $("ol#ns-section-selector").removeClass("ns-section-shadow-state");
     }
 
   });

@@ -582,7 +582,6 @@ ol#ns-section-selector {
   margin-top: 100px;
   position: fixed;
   left: 60px;
-  // background: rgba(255, 255, 255, .33);
   @include border-radius(10px);
   @include screen-format(phone) {
     display: none;
@@ -613,6 +612,12 @@ ol#ns-section-selector {
       top: 7px;
     }
   }
+}
+ol#ns-section-selector.ns-section-shadow-state {
+  background: rgba(0, 0, 0, .33);
+  @include transition-property(background);
+  @include transition-duration(.5s);
+  @include transition-timing-function(ease-in);
 }
 
 #ns-section-overview {
@@ -766,8 +771,115 @@ ol#ns-section-selector {
     }
   }
 }
+
+
+
+
+
 #ns-section-specs {
   background: $color-blue-dark;
+  > .ns-section-wrapper {
+    text-align: center;
+    background: transparent url("/assets/ns-specs-background.png") repeat-y center center;
+    > #ns-section-specs-header{
+      > h2 {
+        display: inline-block;
+        padding: 93px 0 4px 0;
+        background: $color-blue-dark;
+        width: auto;
+        margin: 0 auto 40px auto;
+        text-align: center;
+        border-bottom: 3px solid $color-blue-medium;
+        text-transform: uppercase;
+        font-size: 72px;
+        line-height: 90px;
+      }      
+    }
+    ul#ns-section-specs-col1,
+    ul#ns-section-specs-col2 {
+      display: block;
+      float: left;
+      width: 50%;
+      padding: 0 100px 0 0;
+      margin-bottom: 125px;
+      @include box-sizing(border-box);
+      @include screen-format(phone) {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 0;
+      }
+      @include screen-format(nano) {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 0;
+      }
+      > li {
+        display: inline-block;
+        width: 100%;
+        padding: 21px 25px 29px 25px;
+        margin: 0 0 20px 0;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 600;
+        text-align: left;
+        background: $color-blue-medium;
+        position: relative;
+        @include border-radius(10px);
+        @include box-sizing(border-box);
+        > p {
+          position: relative;
+        }
+      }
+      > li:after {
+        content: url("/assets/ns-specs-left.png");
+        position: absolute;
+        right: -113px;
+        top: 53px;
+        @include screen-format(phone) {
+          display: none;
+          visibility: hidden;
+        }
+        @include screen-format(nano) {
+          display: none;
+          visibility: hidden;
+        }
+      }
+    }
+    ul#ns-section-specs-col2 {
+      padding: 0 0 0 100px;
+      @include screen-format(phone) {
+        margin-bottom: 40px;
+      }
+      @include screen-format(nano) {
+        margin-bottom: 40px;
+      }
+      @include screen-format(phone) {
+        width: 100%;
+        padding: 0;
+      }
+      @include screen-format(nano) {
+        width: 100%;
+        padding: 0;
+      }
+      > li:after {
+        content: url("/assets/ns-specs-right.png");
+        position: absolute;
+        left: -112px;
+        top: 23px;
+        @include screen-format(phone) {
+          display: none;
+          visibility: hidden;
+        }
+        @include screen-format(nano) {
+          display: none;
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+
+
 }
 
 
@@ -791,6 +903,11 @@ nav.ns-section-main {
 ol#ns-section-selector {  z-index: 600; }
 
 
-
+#ns-section-specs > .ns-section-wrapper ul#ns-section-specs-col1 > li > p,
+#ns-section-specs > .ns-section-wrapper ul#ns-section-specs-col2 > li > p {
+                          z-index: 510; } 
+#ns-section-specs > .ns-section-wrapper ul#ns-section-specs-col1 > li:after,
+#ns-section-specs > .ns-section-wrapper ul#ns-section-specs-col2 > li:after {
+                          z-index: 500; } 
 
 
