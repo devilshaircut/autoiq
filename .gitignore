@@ -18,3 +18,5 @@
 /.powrc
 /coverage
 *.dump
+/.ruby-gemset
+/.ruby-version
