@@ -13,6 +13,7 @@
 //  RAILS: Core Rails Files
 //= require jquery
 //= require jquery_ujs
+//= require jquery.onepage-scroll
 //
 //  ANGULAR: Core Angular Files
 //= require angular
