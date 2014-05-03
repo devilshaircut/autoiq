@@ -28,9 +28,11 @@
 //
 //  ANGULAR: Angular App - Controllers
 //= require angular/controllers/sampleController
+//= require angular/controllers/graphController
 //
 //  ANGULAR: Angular App - Directives
 //= require angular/directives/sampleDirective
+//= require angular/directives/autoGraphDirective
 //
 //  SHELL: Core Shell Files
 //= require main

@@ -12,3 +12,19 @@
  *= require main
  *= require_tree ./components
  */
+
+
+path.plotline {
+  stroke: steelblue;
+  stroke-width: 3;
+  fill: none;
+}
+
+path.area{
+  opacity: 0.3;
+}
+
+circle.circle{
+  stroke: white;
+  stroke-width: 5;
+}
