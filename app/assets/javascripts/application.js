@@ -28,7 +28,14 @@
 //
 //  ANGULAR: Angular App - Controllers
 //= require angular/controllers/sampleController
-//= require angular/controllers/graphController
+//= require angular/controllers/indexController
+//= require angular/controllers/summaryController
+//= require angular/controllers/sellController
+//= require angular/controllers/catalogController
+//= require angular/controllers/faqController
+//= require angular/controllers/aboutController
+//= require angular/controllers/loginController
+//= require angular/controllers/summaryController
 //
 //  ANGULAR: Angular App - Directives
 //= require angular/directives/sampleDirective
