@@ -12,8 +12,6 @@ AngularApp.controller("summaryController", ["$scope", "httpService", function($s
   // This is the callback function that executes if the HTTP requests returns unsuccessfully.
   var getModelFailure = function(payload, status) {};
 
-  // Initiate the HTTP request.
-  httpService.getApiEndpoint(apiEndpoint).success(getModelSuccess);
 
 }]);
 
