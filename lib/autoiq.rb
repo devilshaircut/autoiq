@@ -24,8 +24,7 @@ module Autoiq
       # If request fails, generate new token and re-execute.
       if response.success?
         result = JSON.parse(response.body, :symbolize_names => true)
-        photos = get_all_photos(result)
-        result[:photos] = photos
+        result[:photos] = get_all_photos(result)
         return result
       else
         self.access_token(renew=true)
@@ -49,12 +48,14 @@ module Autoiq
       style_ids = inventory[:resultsList].select{ |i| i[:styleId] != "N/A" }.map{ |s| s[:styleId] }.uniq
       all_photos = {}
       style_ids.each do |s|
-        sources = find_photos_by_shot_type(s)[0][:photoSrcs]
-        sizes = {}
-        sources.each{ |source| sizes[source.split("_")[-1].split('.')[0].to_i] = source }
-        largest_size = sizes.keys.max
-        photo = EDMUNDS_MEDIA_ENDPOINT + sizes[largest_size]
-        all_photos[s] = photo
+        all_photos[s] = Rails.cache.fetch([s, "photo"], :expires_in => 1.hour) do
+                          sources = find_photos_by_shot_type(s)[0][:photoSrcs]
+                          sizes = {}
+                          sources.each{ |source| sizes[source.split("_")[-1].split('.')[0].to_i] = source }
+                          largest_size = sizes.keys.max
+                          photo = EDMUNDS_MEDIA_ENDPOINT + sizes[largest_size]
+                          photo
+                        end
       end
       all_photos
     end
