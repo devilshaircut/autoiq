@@ -8,8 +8,9 @@ module Autoiq
     
     def inventory_by_zipcode(opts={})
       raise ArgumentError, 'zipcode missing' if opts[:zipcode].blank?
-      raise ArgumentError, 'radius missing' if opts[:radius].blank?
       raise ArgumentError, 'make missing' if opts[:make].blank?
+      
+      opts[:radius] = 100 if opts[:radius].blank?
       
       body = ""
       opts.each{ |k,v| body += "#{k}=#{v}&"}      
