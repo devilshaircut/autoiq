@@ -574,9 +574,12 @@ main#ns-home {
 
 
 ol#ns-section-selector {
+  padding: 15px 20px 10px 25px;
   margin-top: 60px;
   position: fixed;
   left: 60px;
+  // background: rgba(255, 255, 255, .33);
+  @include border-radius(10px);
   @include screen-format(phone) {
     display: none;
     visibility: hidden;
@@ -666,6 +669,98 @@ ol#ns-section-selector {
 }
 #ns-section-action {
   background: $color-yellow-light;
+  .ns-section-wrapper {
+    background: transparent url("/assets/ns-action-background.png") no-repeat center 177px;
+    @include screen-format(phone) {
+      background: none;
+    }
+    @include screen-format(nano) {
+      background: none;
+    }
+    > #ns-section-action-header {
+      @include span-columns(8 omega, 12);
+      @include prefix(2);
+      @include suffix(2);
+      @include screen-format(phone) {
+        @include span-columns(12 omega, 12);
+        @include prefix(0);
+        @include suffix(0);
+      }
+      @include screen-format(nano) {
+        @include span-columns(12 omega, 12);
+        @include prefix(0);
+        @include suffix(0);
+      }
+      > h2 {
+        display: inline-block;
+        width: 100%;
+        padding: 12px 0 11px 0;
+        margin: 117px 0 54px 0;
+        font-size: 48px;
+        line-height: 60px;
+        text-transform: uppercase;
+        background: $color-yellow-medium;
+        text-align: center;
+        @include border-radius(10px);
+        @include box-sizing(border-box);
+      }
+    }
+    > #ns-section-action-col1,
+    > #ns-section-action-col2 {
+      margin-bottom: 125px;
+      @include span-columns(5, 12);
+      @include prefix(1);
+      @include screen-format(phone) {
+        margin-bottom: 54px;
+        @include span-columns(12 omega, 12);
+        @include prefix(0);
+        @include suffix(0);
+      }
+      @include screen-format(nano) {
+        margin-bottom: 54px;
+        @include span-columns(12 omega, 12);
+        @include prefix(0);
+        @include suffix(0);
+      }
+      > .ns-button.ns-button-cta {
+        width: 100%;
+        margin: 0 0 26px 0;
+        text-align: center;
+        border-top: 4px solid $color-yellow-light;
+        position: relative;
+        top: -4px;
+      }
+      > p {
+        display: inline-block;
+        width: 100%;
+        padding: 25px;
+        border-top: 4px solid $color-yellow-light;
+        font-size: 24px;
+        line-height: 40px;
+        font-weight: 600;
+        background: $color-yellow-medium;
+        position: relative;
+        top: -4px;
+        @include border-radius(10px);
+        @include box-sizing(border-box);
+      }
+    }
+    > #ns-section-action-col2 {
+      @include span-columns(5 omega, 12);
+      @include prefix(0);
+      @include suffix(1);
+      @include screen-format(phone) {
+        @include span-columns(12 omega, 12);
+        @include prefix(0);
+        @include suffix(0);
+      }
+      @include screen-format(nano) {
+        @include span-columns(12 omega, 12);
+        @include prefix(0);
+        @include suffix(0);
+      }
+    }
+  }
 }
 #ns-section-specs {
   background: $color-blue-dark;
