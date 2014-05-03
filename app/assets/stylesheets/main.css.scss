@@ -20,7 +20,7 @@ $color-line: #e6e6e6;
 $color-body-background: #ffffff;
 $color-page-background: #ffffff;
 
-$color-top-bar-background: #191818;
+$color-top-bar-background: rgba(40, 38, 39, .2);
 $color-top-bar-text: #ffffff;
 
 $color-footer-background: #191818;
@@ -178,6 +178,9 @@ nav.ns-section-main {
   position: fixed;
   top: 0;
   left: 0;
+  @include transition-property(background);
+  @include transition-duration(.5s);
+  @include transition-timing-function(ease-in);
   @include screen-format(phone) {
     width: 100%;
     height: 100%;
@@ -242,7 +245,9 @@ nav.ns-section-main {
   }
 }
 
-nav.ns-section-main.ns-nav-shadow-state {}
+nav.ns-section-main.ns-nav-shadow-state {
+  background: rgba(40, 38, 39, .9);
+}
 
 
 
@@ -261,7 +266,6 @@ nav.ns-section-main.ns-nav-shadow-state {}
   float: left;
   width: 100%;
   height: 100%;
-  padding: $height-top-bar 0 0 0;
   background: $color-page-background;
   position: relative;
   left: 0;
@@ -575,7 +579,7 @@ main#ns-home {
 
 ol#ns-section-selector {
   padding: 15px 20px 10px 25px;
-  margin-top: 60px;
+  margin-top: 100px;
   position: fixed;
   left: 60px;
   // background: rgba(255, 255, 255, .33);
@@ -733,7 +737,7 @@ ol#ns-section-selector {
       > p {
         display: inline-block;
         width: 100%;
-        padding: 25px;
+        padding: 21px 25px 29px 25px;
         border-top: 4px solid $color-yellow-light;
         font-size: 24px;
         line-height: 40px;
