@@ -900,7 +900,7 @@ nav.ns-section-main {
 }
 
 
-ol#ns-section-selector {  z-index: 600; }
+
 
 
 #ns-section-specs > .ns-section-wrapper ul#ns-section-specs-col1 > li > p,
@@ -909,5 +909,17 @@ ol#ns-section-selector {  z-index: 600; }
 #ns-section-specs > .ns-section-wrapper ul#ns-section-specs-col1 > li:after,
 #ns-section-specs > .ns-section-wrapper ul#ns-section-specs-col2 > li:after {
                           z-index: 500; } 
+
+#ns-slide-controls.ns-section-main {
+                          z-index: 600; }
+
+ol#ns-section-selector {  z-index: 600; }
+
+
+
+
+
+
+
 
 
