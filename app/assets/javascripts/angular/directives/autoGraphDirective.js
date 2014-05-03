@@ -37,7 +37,7 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
         var miles = parseInt( $(element[0]).attr("miles") );
         var value = parseInt( $(element[0]).attr("value") );
         vis.selectAll('*').remove();
-        $(element[0]).find(".tooltip, .selltip").remove();
+        $(element[0]).find(".tooltip, .selltip, h1").remove();
         drawTheGraph(miles, value);
         scope.$apply();
 
@@ -147,9 +147,11 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
 
           $(element[0]).append(event_div).append(sell_div);
 
-          event_div.css("top", coords.top + 40).css("left", coords.left - (event_div.width()/2 - 10));
-          sell_div.css("top", coords.top - 15 ).css("left", coords.left + 40);
-          console.log( event_div.outerWidth() )
+          var position = { top: coords.top, left: coords.left };
+
+          event_div.css("bottom", 500 - position.top - 40 ).css("left", position.left - (event_div.width()/2 - 10));
+          sell_div.css("bottom", 500 - position.top + 55 ).css("left", position.left + 40);
+
         });
       }
 
