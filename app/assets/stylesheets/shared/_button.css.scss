@@ -1,0 +1,86 @@
+/* Buttons */
+/************************************************/
+
+.ns-button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+button {
+  display: inline-block;
+  padding: 9px 20px 11px 20px;
+  margin: 0;
+  border: none;
+  color: $color-button-text;
+  background: $color-button-background;
+  font-size: $font-body-text-size;
+  line-height: $font-body-text-line-height;
+  font-family: $font-body;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -webkit-appearance: none;
+  @include box-sizing(border-box);
+  @include border-radius(2px);
+}
+
+.ns-button:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+button:active {
+  position: relative;
+  top: 2px;
+}
+
+.ns-button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+button:hover {
+  text-decoration: none;
+  @include opacity(.66);
+}
+
+.ns-button:focus,
+input[type="submit"]:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+button:focus {
+  outline: none;
+}
+
+.ns-button:before,
+input[type="submit"]:before,
+input[type="button"]:before,
+input[type="reset"]:before,
+button:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+}
+
+.ns-button.ns-button-red,
+input[type="submit"].ns-button-red,
+input[type="button"].ns-button-red,
+input[type="reset"].ns-button-red,
+button.ns-button-red {
+  background: $color-primary;
+  color: $color-button-text;
+}
+
+.ns-button.ns-button-cta,
+input[type="submit"].ns-button-cta,
+input[type="button"].ns-button-cta,
+input[type="reset"].ns-button-cta,
+button.ns-button-cta {
+  text-transform: uppercase;
+  font-size: 36px;
+  line-height: 50px;
+  font-weight: 700;
+  font-family: $font-header;
+}

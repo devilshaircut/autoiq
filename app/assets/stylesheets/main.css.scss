@@ -1,0 +1,430 @@
+/****************************************************************************************************
+  0.  SCSS Variables
+****************************************************************************************************/
+
+
+/* Color Theme */
+/************************************************/
+
+$color-primary: #6bc6b5;
+$color-secondary: #20484a;
+$color-tertiary: #cd252f;
+$color-accent: #20484a;
+
+$color-anchor-text: #20484a;
+$color-body-text: #404040;
+$color-header-text: #404040;
+
+$color-line: #e6e6e6;
+
+$color-body-background: #ffffff;
+$color-page-background: #ffffff;
+
+$color-top-bar-background: #191818;
+$color-top-bar-text: #ffffff;
+
+$color-footer-background: #191818;
+$color-footer-text: #ffffff;
+
+$color-button-background: #191818;
+$color-button-text: #ffffff;
+
+$color-form-input-outline: #e6e6e6;
+$color-form-input-background: transparent;
+$color-form-input-text: #404040;
+
+
+
+/* Layout Sizing */
+/************************************************/
+
+$height-top-bar: 60px;
+$height-top-bar-collapsed: 40px;
+
+$font-body-text-size: 14px;
+$font-body-text-line-height: 20px;
+
+
+/* Media Size Breakpoints */
+/************************************************/
+
+$monitor-breakpoint: 1200px;
+$laptop-breakpoint: 980px;
+$tablet-breakpoint: 768px;
+$phone-breakpoint: 480px;
+
+@mixin screen-format($media-type) {
+  @if $media-type == monitor {
+    @media (min-width: $monitor-breakpoint) { @content; }
+  }
+  @else if $media-type == laptop {
+    @media (min-width: $laptop-breakpoint) and (max-width: $monitor-breakpoint - 1) { @content; }
+  }
+  @else if $media-type == tablet {
+    @media (min-width: $tablet-breakpoint) and (max-width: $laptop-breakpoint - 1) { @content; }
+  }
+  @else if $media-type == phone {
+    @media (min-width: $phone-breakpoint) and (max-width: $tablet-breakpoint - 1) { @content; }
+  }
+  @else if $media-type == nano {
+    @media (max-width: $phone-breakpoint - 1) { @content; }
+  }
+}
+
+/* Susy Grid Settings */
+/************************************************/
+
+$total-columns: 12;
+$column-width: 56px;
+$gutter-width: 48px;
+$grid-padding: 0;
+
+
+/* Font Stacks */
+/************************************************/
+
+
+
+$font-header: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$font-body: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+$font-icons: "SSStandard";
+$font-icons-social: "SSSocial";
+
+
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+@import "compass/utilities/general/hacks";
+@import "susy";
+
+@import "shared/_button";
+@import "shared/_form";
+
+
+html {
+  // height: 100%;
+  // overflow: hidden;
+}
+
+body {
+  width: 100%;
+  // height: 100%;
+  font-family: $font-body;
+  font-size: $font-body-text-size;
+  line-height: $font-body-text-line-height;
+  font-weight: 400;
+  color: $color-body-text;
+  -webkit-font-smoothing: antialiased;
+  background: $color-page-background;
+}
+
+
+
+
+
+
+
+
+/* Scaffolding Tools */
+/************************************************/
+
+.ns-section-main {          // This class denotes a main page section.
+  display: inline-block;
+  float: left;
+  width: 100%;
+  > .ns-section-wrapper {   // This class wraps content inside of a main page section, to give it width.
+    display: block;
+    padding: 0 20px;
+    margin: 0 auto;
+    @include legacy-pie-clearfix;
+    @include screen-format(monitor) {
+      width: $monitor-breakpoint - 40px; // The subtraction of 40px accounts for the container padding.
+    }
+  }
+}
+
+
+/* Main Page Section: Navigation */
+/************************************************/
+
+nav.ns-section-main {
+  height: $height-top-bar;
+  background: $color-top-bar-background;
+  color: $color-top-bar-text;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include screen-format(phone) {
+    width: 100%;
+    height: 100%;
+  }
+  @include screen-format(nano) {
+    width: 100%;
+    height: 100%;
+  }
+  a#ns-home {
+    display: inline-block;
+    float: left;
+    height: $height-top-bar;
+    width: 200px;
+    > img {
+      display: inline-block;
+      float: left;
+      height: $height-top-bar;
+      width: 200px;
+    }
+  }
+  ol#ns-navigation {
+    display: inline-block;
+    float: right;
+    height: $height-top-bar;
+    @include screen-format(phone) {
+      width: 100%;
+    }
+    @include screen-format(nano) {
+      width: 100%;
+    }
+    > li {
+      display: inline-block;
+      float: left;
+      height: $height-top-bar;
+      @include screen-format(phone) {
+        width: 100%;
+        height: $height-top-bar-collapsed;
+      }
+      @include screen-format(nano) {
+        width: 100%;
+        height: $height-top-bar-collapsed;
+      }
+      > a {
+        display: inline-block;
+        float: left;
+        height: $height-top-bar;
+        margin: 0 0 0 30px;
+        line-height: $height-top-bar;
+        color: $color-top-bar-text;
+        @include screen-format(phone) {
+          width: 100%;
+          height: $height-top-bar-collapsed;
+          margin: 0;
+        }
+        @include screen-format(nano) {
+          width: 100%;
+          height: $height-top-bar-collapsed;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+nav.ns-section-main.ns-nav-shadow-state {}
+
+
+
+
+/* Main Page */
+/************************************************/
+
+#ns-page-main {   // This holds all the content that can slide right when the slider is activated in "mobile mode".
+  display: inline-block;
+  float: left;
+  width: 100%;
+  padding: $height-top-bar 0 0 0;
+  background: $color-page-background;
+  position: relative;
+  left: 0;
+  @include transition-property(left);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in); 
+  @include transition-delay(0);
+  @include screen-format(phone) {
+    position: absolute;
+  }
+  @include screen-format(nano) {
+    position: absolute;
+  }
+  #ns-slide-controls.ns-section-main {}
+  #ns-banner.ns-section-main {
+    background: $color-tertiary;
+  }
+  section.ns-section-main {}
+  main.ns-section-main {}
+  footer.ns-section-main {}
+}
+
+body.ns-slider-expanded #ns-page-main,
+body.ns-slider-expanded #ns-slide-controls.ns-section-main {
+  left: 80%;
+}
+
+
+
+#ns-slide-controls.ns-section-main {
+  float: left;
+  width: 100%;
+  height: $height-top-bar;
+  background: $color-top-bar-background;
+  color: $color-top-bar-text;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  visibility: hidden;
+  @include transition-property(left);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in); 
+  @include transition-delay(0);
+  @include screen-format(phone) {
+    display: inline-block;
+    visibility: visible;
+  }
+  @include screen-format(nano) {
+    display: inline-block;
+    visibility: visible;
+  }
+  #ns-slide-control-left {
+    display: inline-block;
+    float: left;
+    width: 30px;
+    height: 25px;
+    margin: 17px 0 0 0;
+    background: transparent url("/assets/core/ns-nav-expander.png") no-repeat 0 0;
+  }
+}
+#ns-banner.ns-section-main {}
+section.ns-section-main {}
+main.ns-section-main {}
+footer.ns-section-main {
+  background: $color-top-bar-background;
+  color: $color-top-bar-text;
+}
+
+
+
+
+
+header {}
+article {} // not sure
+aside {} // not sure
+
+
+h1, h2, h3, h4, h5, h6 {}
+
+h1.ns-header-basic {
+  margin: 0 0 20px 0;
+  font-size: 72px;
+  line-height: 80px;
+  font-weight: 700;
+}
+
+h2.ns-header-basic {
+  margin: 0 0 20px 0;
+  font-size: 48px;
+  line-height: 60px;
+  font-weight: 700;
+}
+
+h3.ns-header-basic {
+  margin: 0 0 10px 0;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+p {}
+p.ns-paragraph-basic {
+  margin: 0 0 10px 0;
+}
+
+strong {
+  font-weight: 700;
+}
+em {
+  font-style: italic;
+}
+
+ol.ns-bulleted-list,
+ul.ns-bulleted-list {
+  > li {}
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  padding: 0;
+  margin: 15px 0 24px 0;
+  border: none;
+  color: $color-line;
+  background: $color-line;
+}
+
+
+
+
+
+
+
+ol.ns-module-triple {
+  @include span-columns(12 omega, 12);
+  > li {
+    margin: 0 0 20px 0;
+    @include span-columns(4, 12);
+    @include screen-format(phone) {
+      @include span-columns(12 omega, 12);
+    }
+    @include screen-format(nano) {
+      @include span-columns(12 omega, 12);
+    }
+  }
+  > li:nth-child(3n) {
+    @include span-columns(4 omega, 12);
+    @include screen-format(phone) {
+      @include span-columns(12 omega, 12);
+    }
+    @include screen-format(nano) {
+      @include span-columns(12 omega, 12);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Z-Indices */
+/************************************************/
+
+nav.ns-section-main {     z-index: 400; }
+#ns-page-main {           z-index: 300; }
+
+nav.ns-section-main {
+  @include screen-format(phone) {
+                          z-index: 200; }
+  @include screen-format(nano) {
+                          z-index: 200; }
+}
+
+
+
+
+
+

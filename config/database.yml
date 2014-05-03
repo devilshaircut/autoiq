@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: shell_development
+  pool: 5
+  username: 
+  password:
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: shell_test
+  pool: 5
+  username: 
+  password:
+  host: localhost
+  port: 5432
+
+
