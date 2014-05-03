@@ -39,6 +39,8 @@ gem 'angular-ui-bootstrap-rails'
 gem 'compass-rails'
 gem 'susy'
 
+###
+gem 'typhoeus'
 
 
 
