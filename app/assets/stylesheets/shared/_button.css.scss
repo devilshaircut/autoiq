@@ -9,9 +9,9 @@ button {
   display: inline-block;
   padding: 9px 20px 11px 20px;
   margin: 0;
-  border: none;
-  color: $color-button-text;
-  background: $color-button-background;
+  border-bottom: 1px solid $color-yellow-dark;
+  color: $white;
+  background: $color-yellow-dark;
   font-size: $font-body-text-size;
   line-height: $font-body-text-line-height;
   font-family: $font-body;
@@ -22,7 +22,7 @@ button {
   -webkit-font-smoothing: antialiased;
   -webkit-appearance: none;
   @include box-sizing(border-box);
-  @include border-radius(2px);
+  @include border-radius(5px);
 }
 
 .ns-button:active,
@@ -69,8 +69,9 @@ input[type="submit"].ns-button-red,
 input[type="button"].ns-button-red,
 input[type="reset"].ns-button-red,
 button.ns-button-red {
-  background: $color-primary;
-  color: $color-button-text;
+  background: $color-red-light;
+  color: $white;
+  border-bottom: 5px solid $color-red-dark;
 }
 
 .ns-button.ns-button-cta,
@@ -79,8 +80,8 @@ input[type="button"].ns-button-cta,
 input[type="reset"].ns-button-cta,
 button.ns-button-cta {
   text-transform: uppercase;
-  font-size: 36px;
-  line-height: 50px;
+  font-size: 72px;
+  line-height: 80px;
   font-weight: 700;
   font-family: $font-header;
 }

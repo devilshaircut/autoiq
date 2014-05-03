@@ -33,6 +33,19 @@ $color-form-input-outline: #e6e6e6;
 $color-form-input-background: transparent;
 $color-form-input-text: #404040;
 
+$color-red-light: #ff8b89;
+$color-red-medium: #f45f5c;
+$color-red-dark: #f43431;
+
+$color-yellow-light: #f8e193;
+$color-yellow-medium: #f6c02e;
+$color-yellow-dark: #eca117;
+
+$white: #ffffff;
+
+
+
+
 
 
 /* Layout Sizing */
@@ -85,8 +98,9 @@ $grid-padding: 0;
 
 
 
-$font-header: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$font-header: 'Oswald', 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 $font-body: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$font-accent: 'Montserrat', 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 
 $font-icons: "SSStandard";
 $font-icons-social: "SSSocial";
@@ -103,13 +117,13 @@ $font-icons-social: "SSSocial";
 
 
 html {
-  // height: 100%;
+  height: 100%;
   // overflow: hidden;
 }
 
 body {
   width: 100%;
-  // height: 100%;
+  height: 100%;
   font-family: $font-body;
   font-size: $font-body-text-size;
   line-height: $font-body-text-line-height;
@@ -227,14 +241,22 @@ nav.ns-section-main.ns-nav-shadow-state {}
 /* Main Page */
 /************************************************/
 
+#ns-angular-app {
+  display: inline-block;
+  float: left;
+  width: 100%;
+  height: 100%;
+}
 #ns-page-main {   // This holds all the content that can slide right when the slider is activated in "mobile mode".
   display: inline-block;
   float: left;
   width: 100%;
+  height: 100%;
   padding: $height-top-bar 0 0 0;
   background: $color-page-background;
   position: relative;
   left: 0;
+  @include box-sizing(border-box);
   @include transition-property(left);
   @include transition-duration(0.25s);
   @include transition-timing-function(ease-in); 
@@ -311,7 +333,9 @@ article {} // not sure
 aside {} // not sure
 
 
-h1, h2, h3, h4, h5, h6 {}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-header;
+}
 
 h1.ns-header-basic {
   margin: 0 0 20px 0;
@@ -405,7 +429,32 @@ ol.ns-module-triple {
 
 
 
-
+main#ns-home {
+  height: 100%;
+  background: $color-red-medium;
+  > h1 {
+    width: 100%;
+    font-size: 48px;
+    line-height: 60px;
+    color: $white;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  #ns-home-container {
+    @include span-columns(18 omega, 18);
+    > .ns-button.ns-button-red.ns-button-cta {
+      text-align: center;
+      @include span-columns(5, 18);
+    }
+    > img#ns-seller-pic {
+      @include span-columns(4, 18);
+    }
+    > img#ns-buyer-pic {
+      @include span-columns(4 omega, 18);
+    }
+  }
+}
 
 
 
