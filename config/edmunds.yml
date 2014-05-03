@@ -2,6 +2,7 @@ defaults: &defaults
   client_key: cecrkkbddkceadtcf75he29n
   client_secret: VQxZxYCGXWnb4y49FhMP8mxY
   endpoint: https://api.edmunds.com
+  media_endpoint: https://media.ed.edmunds-media.com
   
 production: &production
   << : *defaults
