@@ -1,4 +1,4 @@
-AngularApp.controller("sampleController", ["$scope", "httpService", function($scope, httpService) {
+AngularApp.controller("summaryController", ["$scope", "httpService", function($scope, httpService) {
 
   $scope.model = {};
 
