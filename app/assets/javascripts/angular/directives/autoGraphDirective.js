@@ -10,7 +10,8 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
       var vis = d3.select( element[0] )
         .append("svg")
         .attr("width", "100%")
-        .attr("height", 400);
+        .attr("height", 500)
+        .attr("background-color", "rgb(246, 95, 88)");
 
       
       var ticks       = [];
@@ -44,7 +45,7 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
 
       function drawTheGraph(miles, value){
         var centerVal   = Math.round( parseInt(miles) / 1000 ) * 1000;
-        var h           = 400;
+        var h           = 500;
         var w           = $( element[0] ).width();
 
         var graphRange  = 9000;
@@ -85,7 +86,7 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
         if( w > breakpoint_width && tick_count < 10 ) tick_count = tick_count * 4;
 
         var x = d3.scale.linear().domain([Math.min.apply( Math, ticks ), Math.max.apply( Math, ticks )]).range([0, w]);
-        var y = d3.scale.linear().domain([Math.min.apply( Math, data ), Math.max.apply( Math, data )]).range([h-80, 80]);
+        var y = d3.scale.linear().domain([Math.min.apply( Math, data ), Math.max.apply( Math, data )]).range([h-80, 180]);
 
         var line = d3.svg.line()
           .x(function(d,i) { return x(ticks[i]); })
@@ -97,7 +98,21 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
           .y1(function(d) { return y(d); });
 
 
+        
+        var xAxis = d3.svg.axis().ticks(tick_count).scale(x).tickSize(0).tickFormat(function(d){ 
+          if( d >= centerVal-graphRange && d < centerVal+graphRange ){
+            return Math.round( d/1000 ) + "k " + ((w <= breakpoint_width) ? "Mi." : "Miles"); 
+          }else
+            return "";
+        });
 
+        vis.append("svg:g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + 140+ ")")
+          .call(xAxis);
+
+
+        var l = vis.append("svg:path").datum(data).attr("class", "area").attr("d", area);
         vis.selectAll("line.horizontalGrid").data( x.ticks(tick_count) ).enter()
           .append("line")
           .attr({
@@ -106,27 +121,8 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
             "y2" :    h,
             "x1" :    function(d){ return x(d);},
             "x2" :    function(d){ return x(d);},
-            "fill" :  "none",
-            "shape-rendering" : "crispEdges",
-            "stroke": "#cccccc",
-            "stroke-width" : "2px"
+            "shape-rendering" : "crispEdges"
         });
-
-        
-        var xAxis = d3.svg.axis().ticks(tick_count).scale(x).tickSize(0).tickFormat(function(d){ 
-          if( d >= centerVal-graphRange && d < centerVal+graphRange ){
-            return Math.round( d/1000 ) + "k Miles"; 
-          }else
-            return "";
-        });
-
-        vis.append("svg:g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + 40+ ")")
-          .call(xAxis);
-
-
-        var l = vis.append("svg:path").datum(data).attr("class", "area").attr("d", area);
         var a = vis.append("svg:path").attr("d", line(data)).attr("class", "plotline");
 
         for( var i in flags ){
@@ -142,15 +138,18 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
           }
         }
 
+        $(element[0]).prepend("<h1>Car Value vs Milage</h1>");
+
         $(".circle").each(function(){
-          var event_div = $("<div class='tooltip'>"+$(this).attr("sell-title")+"<br />Ideal time to sell</div>");
-          var sell_div  = $("<div class='selltip'>Similar car sold for $" + numberWithCommas(parseInt($(this).attr("sell-price")) + Math.round(Math.random()*100) ) +"</div>");
+          var event_div = $("<div class='tooltip'><div>"+$(this).attr("sell-title")+"</div>Ideal time to sell</div>");
+          var sell_div  = $("<div class='selltip'>Similar car sold at $" + numberWithCommas(parseInt($(this).attr("sell-price")) + Math.round(Math.random()*100) ) +"</div>");
           var coords    = $(this).offset();
 
-          event_div.css("top", coords.top + 40).css("left", coords.left - 55);
-          sell_div.css("top", coords.top - 15 ).css("left", coords.left + 40);
-
           $(element[0]).append(event_div).append(sell_div);
+
+          event_div.css("top", coords.top + 40).css("left", coords.left - (event_div.width()/2 - 10));
+          sell_div.css("top", coords.top - 15 ).css("left", coords.left + 40);
+          console.log( event_div.outerWidth() )
         });
       }
 

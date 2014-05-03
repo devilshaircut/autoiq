@@ -28,6 +28,7 @@
 //
 //  ANGULAR: Angular App - Controllers
 //= require angular/controllers/sampleController
+//= require angular/controllers/graphController
 //= require angular/controllers/indexController
 //= require angular/controllers/summaryController
 //= require angular/controllers/sellController

@@ -33,6 +33,11 @@ AngularApp.config(function($routeProvider, $locationProvider) {
     controller: 'loginController',
     activetab: 'login'
   }).
+  when('/graph', {
+    templateUrl: '<%= asset_path("graph.html") %>',
+    controller: 'graphController',
+    activetab: 'index'
+  }).
   otherwise({
     templateUrl: '<%= asset_path("index.html") %>',
     activetab: 'index'
