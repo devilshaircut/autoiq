@@ -79,11 +79,11 @@
     <div class="ns-section-wrapper">
       <h3 class="title" ng-click="moveWrapper()">Condition:</h3>
         <ul id="wrapper">
-          <li ng-class="{'wrapper-here' : wrapperHere == true }"><%= image_tag "acura.jpg"%><p>Damaged</p></li>
-          <li ng-class="{'wrapper-here' : wrapperHere == true }"><%= image_tag "acura.jpg"%><p>Roughly</p></li>
-          <li><%= image_tag "acura.jpg"%><p>Average</p></li>
-          <li ng-class="{'wrapper-here' : wrapperHere == true }"><%= image_tag "acura.jpg"%><p>Clean</p></li>
-          <li ng-class="{'wrapper-here' : wrapperHere == true }"><%= image_tag "acura.jpg"%><p>Outstanding</p></li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'damaged'">Damaged</label></li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'rough'">Rough</label></li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'average'">Average</label></li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'clean'">Clean</label></li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'outstanding'">Outstanding</label></li>
         </ul>
     </div>
     <!-- .ns-section-wrapper -->

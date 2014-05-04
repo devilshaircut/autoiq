@@ -4,6 +4,8 @@ AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataSer
 
   $scope.model = {};
 
+  $scope.condition = null;
+
   $scope.$watch('model', function(newValue, oldValue) { sharedDataService.set( "model", newValue ); }, true);
   
   $scope.$watch('model.vin_number', function(newValue, oldValue) {
@@ -30,7 +32,7 @@ AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataSer
   // $timeout( function() { $("ul#wrapper > li").addClass("wrapper-here"); }, 2000 );
 
     $(window).scroll(function() {
-      if ( $("#ns-section-condition").position().top < $(window).scrollTop() ) {
+      if ( $("#ns-section-condition").position().top < $(window).scrollTop() + 1 ) {
         $("ul#wrapper > li").addClass("wrapper-here");
         $("ul#wrapper > li").addClass("wrapper-here");
       }
