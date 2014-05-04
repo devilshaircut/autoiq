@@ -79,11 +79,21 @@
     <div class="ns-section-wrapper">
       <h3 class="title" ng-click="moveWrapper()">Condition:</h3>
         <ul id="wrapper">
-          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'damaged'">Damaged</label></li>
-          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'rough'">Rough</label></li>
-          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'average'">Average</label></li>
-          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'clean'">Clean</label></li>
-          <li ng-class="{ 'wrapper-here' : wrapperHere == true }"><label ng-click="condition = 'outstanding'">Outstanding</label></li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true, 'wrapper-selected' : condition == 'damaged' }">
+            <label ng-click="condition = 'damaged'">Damaged</label>
+          </li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true, 'wrapper-selected' : condition == 'rough' }">
+            <label ng-click="condition = 'rough'">Rough</label>
+          </li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true, 'wrapper-selected' : condition == 'average' }">
+            <label ng-click="condition = 'average'">Average</label>
+          </li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true, 'wrapper-selected' : condition == 'clean' }">
+            <label ng-click="condition = 'clean'">Clean</label>
+          </li>
+          <li ng-class="{ 'wrapper-here' : wrapperHere == true, 'wrapper-selected' : condition == 'outstanding' }">
+            <label ng-click="condition = 'outstanding'">Outstanding</label>
+          </li>
         </ul>
     </div>
     <!-- .ns-section-wrapper -->

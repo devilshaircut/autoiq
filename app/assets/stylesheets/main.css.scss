@@ -462,6 +462,7 @@ ul#wrapper {
   @include prefix(1);
   @include suffix(1);    
   > li {
+    @include opacity(.5);
     @include span-columns(2, 10);
     @include screen-format(phone) {
       margin: 10px 0 20px 0;
@@ -517,6 +518,14 @@ ul#wrapper {
   > li:nth-child(4).wrapper-here {
     top: 0;
   }
+  > li:nth-child(1).wrapper-selected,
+  > li:nth-child(3).wrapper-selected,
+  > li:nth-child(5).wrapper-selected,
+  > li:nth-child(2).wrapper-selected,
+  > li:nth-child(4).wrapper-selected {
+    background: $color-blue-medium;
+    @include opacity(1);
+  }
   
   li:nth-child(5n){
     @include span-columns(2 omega, 10);
@@ -536,7 +545,7 @@ ul#wrapper {
     }
   }
   li:hover {
-    @include opacity(.5);
+    @include opacity(.75);
   }
 }
 
