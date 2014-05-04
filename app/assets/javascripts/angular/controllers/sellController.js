@@ -20,7 +20,8 @@ AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataSer
         $scope.model.trim = payload.years[0].styles[i].id;
       }
       $scope.model.trim_options.push({ name: payload.years[0].styles[i].name, id: payload.years[0].styles[i].id });
-
+      $scope.model.price = payload.price;
+      $scope.model.car = "" + payload.years[0].year+ " " + payload.make.name + " " + payload.model.name
     }
   };
 

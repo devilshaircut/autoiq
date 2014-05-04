@@ -23,15 +23,15 @@
   <section id="ns-section-overview" class="ns-section-main">
     <img id="ns-overview-pic" src="/assets/ns-car.jpg" />
     <div class="ns-section-wrapper">
-      <h1>2014 Acura MDX</h1>
-      <h2>Estimated Value: $42,290</h2>
+      <h1>{{ model.car }}</h1>
+      <h2>Estimated Value: ${{ model.price.usedPrivateParty }}</h2>
     </div>
     <!-- .ns-section-wrapper -->
   </section>
   <!-- #ns-section-overview .ns-section-main -->
 
   <section id="ns-section-value" class="ns-section-main">
-    <auto-graph miles="41532" value="20000" style="height: 500px; display: block;"></auto-graph>
+    <auto-graph ng-attr-price="{{ model.price.usedPrivateParty }}" ng-attr-miles="{{ model.mileage }}" style="height: 500px; display: block;"></auto-graph>
   </section>
   <!-- #ns-section-value .ns-section-main -->
 
@@ -96,9 +96,6 @@
 
 </div>
 <!-- #ns-scroll -->
-
-
-
 
 
 

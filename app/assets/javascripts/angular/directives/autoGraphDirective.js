@@ -1,9 +1,9 @@
 AngularApp.directive('autoGraph', ["$window", function($window) {
   return {
-    restrict: 'E', 
+    restrict: 'AE', 
     scope: { 
-      miles: '=',
-      value: "="
+      miles: '=ngAttrMiles',
+      price: "=ngAttrPrice"
     },
     link: function (scope, element, attrs) {
 
@@ -19,19 +19,11 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
       var flags       = [];
       var tick_count  = 0;
 
-      scope.$watch('miles', function (miles, oldVal) {
-        if (!miles) { return; }
+      vis.selectAll('*').remove();
+      $(element[0]).find(".tooltip").remove();
 
-        scope.$watch('value', function (value, oldVal) {
-          vis.selectAll('*').remove();
-          $(element[0]).find(".tooltip").remove();
+      drawTheGraph( parseInt(attrs.miles), parseInt(attrs.price) );
 
-          if (!value) { return; }
-
-          drawTheGraph( miles, value );
-
-        });
-      });
 
       angular.element($window).bind('resize', function () {
         var miles = parseInt( $(element[0]).attr("miles") );
