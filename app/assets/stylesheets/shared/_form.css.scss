@@ -36,6 +36,7 @@ textarea {
   padding: 5px 9px 8px 9px;
   border: 1px solid $color-form-input-outline;
   background: $color-form-input-background;
+  font-family: $font-header;
   @include box-sizing(border-box);
   @include border-radius(2px);
 }

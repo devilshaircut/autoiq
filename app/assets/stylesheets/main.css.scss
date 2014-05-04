@@ -29,8 +29,8 @@ $color-footer-text: #ffffff;
 $color-button-background: #191818;
 $color-button-text: #ffffff;
 
-$color-form-input-outline: #e6e6e6;
-$color-form-input-background: transparent;
+$color-form-input-outline: transparent;
+$color-form-input-background: rgba(255, 255, 255, .33);
 $color-form-input-text: #404040;
 
 $color-red-light: #ff8b89;
@@ -173,7 +173,7 @@ body {
 
 nav.ns-section-main {
   height: $height-top-bar;
-  background: #2A3044;
+  background: rgba(40, 38, 39, .2);
   color: $color-top-bar-text;
   position: fixed;
   top: 0;
@@ -337,75 +337,117 @@ footer.ns-section-main {
   color: $color-top-bar-text;
 }
 
-//
 
-.section-form{
-  text-align:center;
-  padding-top:80px;
-  height:400px;
-  padding-top:200px;
-  #input-form{ 
-    background-color:white;
-    height: 46px;
-    border-radius: 7px;
-    font-size: 20px;
-    width: 30%;
-  }
-  #trim{
-    background-color:white;
-    width: 30%;
-    height: 40px;
-    font-size: 20px;
-  }
-  #submit{
-    color:black;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    .submit-btn{
-    border: 1px solid transparent;
-    border-radius: 7px;
-    width: 30%;
-    height: 60px;
-    font-size: 20px;
+
+input[type="date"].ns-section-input,
+input[type="datetime"].ns-section-input,
+input[type="datetime-local"].ns-section-input,
+input[type="email"].ns-section-input,
+input[type="month"].ns-section-input,
+input[type="number"].ns-section-input,
+input[type="password"].ns-section-input,
+input[type="search"].ns-section-input,
+input[type="tel"].ns-section-input,
+input[type="text"].ns-section-input,
+input[type="time"].ns-section-input,
+input[type="url"].ns-section-input,
+input[type="week"].ns-section-input,
+select.ns-section-input,
+textarea.ns-section-input {
+  width: 100%;
+  padding: 16px 0 0 0;
+  font-size: 60px;
+  line-height: 70px;
+  color: $white;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#ns-scroll {
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include transition-property(translate);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in); 
+  @include transition-delay(0);
+  > section.ns-section-main {
+    height: 100%;
+    .ns-button.ns-button-red.ns-button-cta {
+      width: 100%;
+      text-align: center;
     }
   }
 }
 
-.background-blue{
-  background-color:#63DDD6;
+#zipcode,
+#submit,
+#options,
+#vin,
+#mileage {
+  @include span-columns(8 omega, 12);
+  @include prefix(2);
+  @include suffix(2);
 }
-.background-red{
-  background-color:#F45F5C;
+
+
+ul#wrapper {
+  @include span-columns(10 omega, 12);
+  @include prefix(1);
+  @include suffix(1);    
+  > li {
+    @include span-columns(2, 10);
+    > img {
+      width: 100%;
+    }
+  }
+  li:nth-child(5){
+    @include span-columns(2 omega, 10);
+  }
 }
-.background-yellow{
-  background-color:#F8E193;
+
+
+.background-blue {
+  background: #63DDD6;
 }
-.background-black{
-  background-color:#2A3045;
+.background-red {
+  background: #F45F5C;
 }
-.background-light-blue{
-  background-color:#5FD5CE;
+.background-yellow {
+  background: #F8E193;
 }
+.background-black {
+  background: #2A3045;
+}
+.background-light-blue {
+  background: #5FD5CE;
+}
+.background-blue,
+.background-red,
+.background-yellow,
+.background-black,
+.background-light-blue {
+  > .ns-section-wrapper {
+    position: relative;
+    top: 50%;
+    @include translateY(-66%);
+  }
+}
+
+
+
+
+
 .title{
-  font-size: 48px;
-  margin-bottom: 35px;
-  color:white;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 60px;
+  line-height: 70px;
+  color: $white;
+  text-transform: uppercase;
+  text-align: center;
 }
-.form-control{
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
+
 
 ul#horizontal-list{
   min-width: 696px;
@@ -421,27 +463,8 @@ ul#horizontal-list{
   }
 }
 
-#wrapper {
-  @include span-columns(10, 12);
-  @include prefix(1);
-  @include suffix(1);
-  li{
-    @include span-columns(2,10);
-    @include screen-format(phone){
-      @include span-columns(10 omega, 10);
-    }
-  }
-  li:nth-child(5){
-    @include span-columns(2 omega, 10);
-  }
-}
-#condition{
-  img{
-    width:100%;
-  }
-  p{
-    color:white;}
-}
+
+
 
 
 
