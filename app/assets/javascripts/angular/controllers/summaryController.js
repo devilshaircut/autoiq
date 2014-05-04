@@ -1,17 +1,17 @@
-AngularApp.controller("summaryController", ["$scope", "httpService", function($scope, httpService) {
+console = { log: function(input){}}
+AngularApp.controller("summaryController", ["$scope", "httpService", "sharedDataService", function($scope, httpService, sharedDataService) {
 
-  $scope.model = {};
+  $scope.model = sharedDataService.get("model");
 
-  var apiEndpoint = '/path/to/api/file.json';
+  httpService.getJsonpApiEndpoint(
+    "https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId="+ $scope.model.trim+"&fmt=json&api_key=6f6hhxs549tjfubcfqqxgnyz&callback=JSON_CALLBACK"
+  ).success( getStyleLookupSuccess );
 
-  // This is the callback function that executes if the HTTP requests returns successfully.
-  var getModelSuccess = function(payload, status) {
-    $scope.model = payload.data; // Remove .data if API is not formatted to store data in a data property.
+  var getStyleLookupSuccess = function(payload, status) {
+    console.log(" success ");
   };
 
-  // This is the callback function that executes if the HTTP requests returns unsuccessfully.
-  var getModelFailure = function(payload, status) {};
-
+  smoothScroll.init();
 
 }]);
 

@@ -13,6 +13,7 @@
 //  RAILS: Core Rails Files
 //= require jquery
 //= require jquery_ujs
+//= require jquery.onepage-scroll
 //
 //  ANGULAR: Core Angular Files
 //= require angular
@@ -25,6 +26,7 @@
 //
 //  ANGULAR: Angular App - Services
 //= require angular/services/httpService
+//= require angular/services/sharedDataService
 //
 //  ANGULAR: Angular App - Controllers
 //= require angular/controllers/sampleController

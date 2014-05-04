@@ -1,19 +1,29 @@
-AngularApp.controller("sampleController", ["$scope", "httpService", function($scope, httpService) {
+AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataService", function($scope, httpService, sharedDataService) {
+
+  smoothScroll.init();
 
   $scope.model = {};
 
-  var apiEndpoint = '/path/to/api/file.json';
+  $scope.$watch('model', function(newValue, oldValue) { sharedDataService.set( "model", newValue ); }, true);
+  
+  $scope.$watch('model.vin_number', function(newValue, oldValue) {
+    if( typeof newValue != "undefined" && newValue.length == 17 ){
+      httpService.getJsonpApiEndpoint("https://api.edmunds.com/api/vehicle/v2/vins/"+newValue+"?fmt=json&api_key=6f6hhxs549tjfubcfqqxgnyz&callback=JSON_CALLBACK").success(getVinLookupSuccess);
+    }
+  }, true);
 
-  // This is the callback function that executes if the HTTP requests returns successfully.
-  var getModelSuccess = function(payload, status) {
-    $scope.model = payload.data; // Remove .data if API is not formatted to store data in a data property.
+  var getVinLookupSuccess = function(payload, status) {
+    if( typeof $scope.model.trim_options == "undefined" ) $scope.model.trim_options = [];
+
+    for( var i in payload.years[0].styles ){
+      if( i == 0 ){
+        $scope.model.trim = payload.years[0].styles[i].id;
+      }
+      $scope.model.trim_options.push({ name: payload.years[0].styles[i].name, id: payload.years[0].styles[i].id });
+
+    }
   };
 
-  // This is the callback function that executes if the HTTP requests returns unsuccessfully.
-  var getModelFailure = function(payload, status) {};
-
-  // Initiate the HTTP request.
-  httpService.getApiEndpoint(apiEndpoint).success(getModelSuccess);
 
 }]);
 

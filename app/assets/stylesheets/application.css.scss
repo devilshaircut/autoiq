@@ -69,6 +69,8 @@ circle.circle{
   padding: 10px;
   background: rgba(0, 0, 0, 0.3);
   text-align: center;
+  width: 150px;
+  z-index: 9999;
   div{
     font-weight: bold;
     font-size: 30px;
@@ -87,13 +89,16 @@ circle.circle{
   border-bottom-color: rgba(0, 0, 0, 0.3);
   border-width: 10px;
   margin-left: -10px;
+  z-index: 9999;
 }
 
 .selltip{
   position: absolute;
+  
   padding: 3px 15px;
   background: rgba(0, 0, 0, 0.3); 
   font-size: 12px;
+  z-index: 9999;
 }
 
 .selltip:after {
@@ -110,6 +115,7 @@ circle.circle{
   border-bottom-color: rgba(0, 0, 0, 0.3);
   border-width: 6px;
   margin-top: -12px;
+  z-index: 9999;
 }
 
 
