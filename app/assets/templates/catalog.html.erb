@@ -48,7 +48,7 @@
         </div>
         <!-- #ns-catalog-facets-price-high -->
         <div id="ns-catalog-facets-submit">
-          <button>Submit</button>
+          <button ng-click="doSearch();">Submit</button>
         </div>
         <!-- #ns-catalog-facets-submit -->
       </div>
@@ -72,7 +72,7 @@
 
     <div class="md-table-tools">
       <div class="md-table-tools-left">
-        <label>We found 94 great cars for you.</label>
+        <label>We found {{results.length || 0}} great cars for you.</label>
       </div>
       <!-- .md-table-tools-left -->
       <div class="md-table-tools-right">
@@ -114,7 +114,7 @@
             <td>{{ row.year }}</td>
             <td>{{ row.zipcode }}</td>
             <td>{{ row.vin }}</td>
-            <td>${{ row.inventoryPrice | number }}</td>
+            <td>${{ row.price | number }}</td>
             <td><a href="{{row.referral}}">More Info</a></td>
           </tr>
 

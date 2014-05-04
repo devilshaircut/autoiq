@@ -1,7 +1,6 @@
 AngularApp.controller("catalogController", ["$scope", "httpService", "$timeout", function($scope, httpService, $timeout) {
 
   $scope.pageTitle = "Find A Car".split("");
-  console.log($scope.pageTitle);
 
   $scope.pageReady = false;
   $scope.bounceReady = false;
@@ -24,20 +23,20 @@ AngularApp.controller("catalogController", ["$scope", "httpService", "$timeout",
   $scope.showRow = function(row){
     var flag = true;
 
-    if( $scope.model.price_low != null ){
+    if( $scope.model.price_low != null && $scope.model.price_low != "" ){
       var price_low = parseInt( $scope.model.price_low.replace("$", "").replace(",","") )
-      if( row.inventoryPrice < price_low ){
+      if( row.price < price_low ){
         return false  
       }
     }
-    if( $scope.model.price_high != null ){
+    if( $scope.model.price_high != null && $scope.model.price_high != "" ){
       var price_high = parseInt( $scope.model.price_high.replace("$", "").replace(",","") )
-      if( row.inventoryPrice > price_high ){
+      if( row.price > price_high ){
         return false  
       }
     }
 
-    if( $scope.model.year != null ){
+    if( $scope.model.year != null && $scope.model.year != "" ){
       if( row.year != $scope.model.year ){
         return false  
       }
@@ -51,22 +50,27 @@ AngularApp.controller("catalogController", ["$scope", "httpService", "$timeout",
     if( newValue && $scope.car_models[newValue] ){
       $scope.current_car_models = $scope.car_models[newValue];
     }
-    doSearch(newValue, oldValue);
   });
 
-  $scope.$watch('model.model', doSearch, true);
-  $scope.$watch('model.zipcode', doSearch, true);
 
-  function doSearch(newValue, oldValue){
+  $scope.doSearch = function(){
     if( $scope.model.zipcode && $scope.model.zipcode.length == 5 && $scope.model.make ){
 
       httpService.getApiEndpoint(
         "/search.json?" + $.param( $scope.model )
       ).success( function(payload, status){
-        console.log(payload.resultsList)
+        console.log(payload)
 
         for(var i in payload.resultsList){
           payload.resultsList[i].zipcode = payload.resultsList[i].dealerAddress.substr( payload.resultsList[i].dealerAddress.length - 5  );
+
+          payload.resultsList[i].price = payload.resultsList[i].inventoryPrice;
+          if( payload.resultsList[i].price == "N/A" ){
+            payload.resultsList[i].price = payload.resultsList[i].tmvinventoryPrice;
+          }
+          if( payload.resultsList[i].price == "N/A" ){
+            payload.resultsList[i].price = null;
+          }
 
           payload.resultsList[i].referral = "http://www.edmunds.com/inventory/vin.html?" + 
             "make="+payload.resultsList[i].make+"&" + 
