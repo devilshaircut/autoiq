@@ -86,6 +86,8 @@ button.ns-button-cta {
   line-height: 80px;
   font-weight: 700;
   font-family: $font-header;
+  @include border-radius(10px);
+  @include box-shadow(0 -5px 0 $color-yellow-dark inset);
   @include screen-format(phone) {
     padding: 17px 20px 23px 20px;
     font-size: 42px;
