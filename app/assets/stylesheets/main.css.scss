@@ -208,8 +208,9 @@ nav.ns-section-main {
     > img {
       display: inline-block;
       float: left;
-      height: $height-top-bar;
-      width: 150px;
+      height: 66%;
+      position: relative;
+      top: 9px;
     }
   }
   ol#ns-navigation {
