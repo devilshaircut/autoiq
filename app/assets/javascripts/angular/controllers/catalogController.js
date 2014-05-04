@@ -62,6 +62,7 @@ AngularApp.controller("catalogController", ["$scope", "httpService", "$timeout",
         console.log(payload)
 
         for(var i in payload.resultsList){
+          payload.resultsList[i].picture = payload.photos[ payload.resultsList[i].styleId ];
           payload.resultsList[i].zipcode = payload.resultsList[i].dealerAddress.substr( payload.resultsList[i].dealerAddress.length - 5  );
 
           payload.resultsList[i].price = payload.resultsList[i].inventoryPrice;

@@ -95,6 +95,7 @@
         </colgroup>
         <thead>
           <tr>
+            <th></th>
             <th>Make:</th>
             <th>Model:</th>
             <th>Colors:</th>
@@ -108,6 +109,7 @@
         <tbody>
 
           <tr ng-repeat="row in results" ng-show="showRow(row)">
+            <td><img ng-src="{{ row.picture }}" height="50" width="50" /></td>
             <td>{{ row.make }}</td>
             <td>{{ row.model }}</td>
             <td>{{ row.exteriorGenericColor }}</td>
@@ -119,13 +121,13 @@
           </tr>
 
           <tr ng-hide="results == null || results != []">
-            <td colspan="8" style="text-align: center;">
+            <td colspan="9" style="text-align: center;">
               No results were found for this search. Please try again!
             </td>
           </tr>
 
           <tr ng-hide="results != null">
-            <td colspan="8" style="text-align: center;">
+            <td colspan="9" style="text-align: center;">
               Please enter in search criteria above!
             </td>
           </tr>
