@@ -1392,6 +1392,12 @@ ol#ns-section-selector {  z-index: 600; }
   background: $color-blue-dark;
   color: $white;
   height: 660px;
+  @include screen-format(phone) {
+    height: auto;
+  }
+  @include screen-format(nano) {
+    height: auto;
+  }
   h1 {
     margin: 161px 0 55px 0;
     text-align: center;
@@ -1413,6 +1419,16 @@ ol#ns-section-selector {  z-index: 600; }
     @include span-columns(8 omega, 12);
     @include prefix(2);
     @include suffix(2);
+    @include screen-format(phone) {
+      @include span-columns(12 omega, 12);
+      @include prefix(0);
+      @include suffix(0);
+    }
+    @include screen-format(nano) {
+      @include span-columns(12 omega, 12);
+      @include prefix(0);
+      @include suffix(0);
+    }
     label {
       margin: 0 0 2px 0;
       font-family: $font-header;
@@ -1446,6 +1462,14 @@ ol#ns-section-selector {  z-index: 600; }
     > #ns-catalog-facets-1 {
       margin: 0 0 29px 0;
       @include span-columns(8 omega, 8);
+      @include screen-format(phone) {
+        margin: 0;
+        @include span-columns(12 omega, 12);
+      }
+      @include screen-format(nano) {
+        margin: 0;
+        @include span-columns(12 omega, 12);
+      }
       > #ns-catalog-facets-year {
         position: relative;
         left: 300%;
@@ -1473,6 +1497,14 @@ ol#ns-section-selector {  z-index: 600; }
     > #ns-catalog-facets-2 {
       margin: 0 0 20px 0;
       @include span-columns(10 omega, 10);
+      @include screen-format(phone) {
+        margin: 0 0 60px 0;
+        @include span-columns(12 omega, 12);
+      }
+      @include screen-format(nano) {
+        margin: 0 0 60px 0;
+        @include span-columns(12 omega, 12);
+      }
       > #ns-catalog-facets-price-low {
         position: relative;
         left: 300%;
@@ -1495,6 +1527,14 @@ ol#ns-section-selector {  z-index: 600; }
         @include transition-property(left);
         @include transition-duration(.5s);
         @include transition-timing-function(ease-out);
+        @include screen-format(phone) {
+          margin: 0 0 20px 0;
+          @include span-columns(12 omega, 12);
+        }
+        @include screen-format(nano) {
+          margin: 0 0 20px 0;
+          @include span-columns(12 omega, 12);
+        }
       }
     }
     > #ns-catalog-facets-2.ns-facets-in {
@@ -1504,6 +1544,14 @@ ol#ns-section-selector {  z-index: 600; }
         @include transition-property(left);
         @include transition-duration(.5s);
         @include transition-timing-function(ease-out);
+        @include screen-format(phone) {
+          margin: 0 0 20px 0;
+          @include span-columns(12 omega, 12);
+        }
+        @include screen-format(nano) {
+          margin: 0 0 20px 0;
+          @include span-columns(12 omega, 12);
+        }
       }
     }
   }
