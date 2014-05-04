@@ -51,6 +51,9 @@ $color-blue-dark: #2a3045;
 
 $white: #ffffff;
 
+$color-table-line: #d0d1d1;
+$color-table-zebra: #e8e9e9;
+
 
 @mixin input-placeholder {
   &.placeholder { @content; }
@@ -1169,6 +1172,10 @@ nav.ns-section-main {
 
 ol#ns-section-selector {  z-index: 600; }
 
+
+
+
+// --------------------------------------------------
 .list {
 	position: relative;
 	p {
@@ -1196,4 +1203,371 @@ ol#ns-section-selector {  z-index: 600; }
 		margin-top: 150px;
 		margin-right: 19px;
 	}
+}
+// --------------------------------------------------
+
+
+
+
+
+
+
+
+#ns-catalog-facets {
+  background: $color-blue-dark;
+  color: $white;
+  height: 660px;
+  h1 {
+    margin: 161px 0 55px 0;
+    text-align: center;
+    font-size: 60px;
+    line-height: 70px;
+    text-transform: uppercase;
+  }
+  form {
+    @include span-columns(8 omega, 12);
+    @include prefix(2);
+    @include suffix(2);
+    label {
+      margin: 0 0 2px 0;
+      font-family: $font-header;
+      font-size: 24px;
+      line-height: 20px;
+      color: $white;
+      text-transform: uppercase;
+    }
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 9px 9px 13px 9px;
+      color: $white;
+      text-transform: uppercase;
+      font-size: 24px;
+      line-height: 30px;
+    }
+    > #ns-catalog-facets-1 {
+      margin: 0 0 29px 0;
+      @include span-columns(8 omega, 8);
+      > #ns-catalog-facets-year {
+        @include span-columns(2, 10);
+      }
+      > #ns-catalog-facets-make {
+        @include span-columns(3, 10);
+      }
+      > #ns-catalog-facets-model {
+        @include span-columns(3, 10);
+      }
+      > #ns-catalog-facets-zip {
+        @include span-columns(2 omega, 10);
+      }
+    }
+    > #ns-catalog-facets-2 {
+      margin: 0 0 20px 0;
+      @include span-columns(10 omega, 10);
+      > #ns-catalog-facets-price-low {
+        @include span-columns(5, 10);
+      }
+      > #ns-catalog-facets-price-high {
+        @include span-columns(5 omega, 10);
+      }
+    }
+  }
+}
+#ns-catalog {
+  background: #d4d6da;
+}
+
+
+
+
+
+
+
+// This type of data table is convertible to a tiled list view. The tiled list view is togged on by adding the "md-table-convertible-toggle" class to this table tag.
+table.md-table-backoffice,
+table.md-table-convertible {
+  width: 100%;
+  margin: 0 0 20px 0;
+  background: $white;
+  color: $color-body-text;
+  font-size: 16px;
+  line-height: 30px;
+  > thead {
+    > tr {
+      > th {
+        padding: 4px 10px 3px 10px;
+        border-top: 1px solid $color-table-line;
+        border-bottom: 1px solid $color-table-line;
+        background: rgba(255, 255, 255, .75);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      > th.md-sortable-column {
+        cursor: pointer;
+        i.ss-icon {
+          font-size: 8px;
+        }
+      }
+      > th.md-sortable-column:hover,
+      > th.md-sortable-column-current {
+        background: $color-table-line;
+      }
+    } 
+  }
+  > tbody {
+    > tr {
+      > td {
+        padding: 7px 10px 8px 10px;
+        border-bottom: 1px solid $color-table-line;
+        white-space: nowrap;
+        cursor: pointer;
+        span.md-table-convertible-label {
+          display: none;
+          visibility: hidden;
+        }
+      }
+    }
+    > tr:nth-child(odd) {
+      > td {
+        background: $color-table-zebra;
+      }
+    }
+    > tr:hover {
+      > td {
+        background: $color-table-line;
+      }
+    }
+    > tr.md-table-convertible-current-row {
+      > td {
+        background: $color-table-line;
+      }
+    }
+  }
+}
+
+table.md-table-backoffice {
+  > tbody {
+    > tr {
+      > td {
+        white-space: normal;
+        cursor: default;
+      }
+    }
+    > tr:hover {
+      > td {
+        background: transparent;
+      }
+    }
+  }
+}
+
+// These are the styles for the table when it displays in its tiled list view.
+table.md-table-convertible.md-table-convertible-toggle {
+  display: inline-block;
+  float: left;
+  width: 100%;
+  @include box-sizing(border-box);
+  > thead {
+    display: none;
+    visibility: hidden;
+  }
+  > tbody {
+    @include box-sizing(border-box);
+    @include span-columns(12 omega, 12);
+    > tr {
+      padding: 20px;
+      margin-bottom: 20px;
+      background: $white;
+      @include border-radius(2px);
+      @include box-sizing(border-box);
+      @include span-columns(4, 12);
+      @include screen-format(phone) {
+        @include span-columns(12 omega, 12);
+      }
+      @include screen-format(nano) {
+        @include span-columns(12 omega, 12);
+      }
+      > td {
+        padding: 0;
+        @include box-sizing(border-box);
+        @include span-columns(4 omega, 4);
+        span.md-table-convertible-label {;
+          visibility: visible;
+          font-weight: 700;
+          @include span-columns(2, 5);
+        }
+        .md-button,
+        input[type="submit"],
+        button {
+          margin: 10px 0;
+        }
+      }
+      > td:nth-child(1) {
+        border-top: 1px solid $color-table-line;
+      }
+    }
+    > tr:nth-child(3n) {
+      @include span-columns(4 omega, 12);
+      @include screen-format(phone) {
+        @include span-columns(12 omega, 12);
+      }
+      @include screen-format(nano) {
+        @include span-columns(12 omega, 12);
+      }
+    }
+    > tr:nth-child(odd) {
+      td {
+        background: none;
+      }
+    }
+    > tr:hover {
+      td {
+        background: none;
+      }
+    }
+    > tr.md-table-convertible-current-row {
+      > td {
+        background: $white;
+      }
+    }
+  }
+}
+// These are the styles for the table when it displays in its tiled list view.
+table.md-table-convertible,
+table.md-table-convertible.md-table-convertible-toggle {
+  @include screen-format(phone) {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    @include box-sizing(border-box);
+  }
+  @include screen-format(nano) {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    @include box-sizing(border-box);
+  }
+  > thead {
+    @include screen-format(phone) {
+      display: none;
+      visibility: hidden;
+    }
+    @include screen-format(nano) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  > tbody {
+    @include screen-format(phone) {
+      @include box-sizing(border-box);
+      @include span-columns(12 omega, 12);
+    }
+    @include screen-format(nano) {
+      @include box-sizing(border-box);
+      @include span-columns(12 omega, 12);
+    }
+    > tr {
+      @include screen-format(phone) {
+        padding: 20px;
+        margin-bottom: 20px;
+        background: $white;
+        @include border-radius(2px);
+        @include box-sizing(border-box);
+        @include span-columns(12 omega, 12);
+      }
+      @include screen-format(nano) {
+        padding: 20px;
+        margin-bottom: 20px;
+        background: $white;
+        @include border-radius(2px);
+        @include box-sizing(border-box);
+        @include span-columns(12 omega, 12);
+      }
+      > td {
+        @include screen-format(phone) {
+          padding: 0;
+          @include box-sizing(border-box);
+          @include span-columns(4 omega, 4);
+        }
+        @include screen-format(nano) {
+          padding: 0;
+          @include box-sizing(border-box);
+          @include span-columns(4 omega, 4);
+        }
+        span.md-table-convertible-label {
+          @include screen-format(phone) {
+            visibility: visible;
+            font-weight: 700;
+            @include span-columns(2, 5);
+          }
+          @include screen-format(nano) {
+            visibility: visible;
+            font-weight: 700;
+            @include span-columns(2, 5);
+          }
+        }
+        .md-button,
+        input[type="submit"],
+        button {
+          @include screen-format(phone) {
+            margin: 10px 0;
+          }
+          @include screen-format(nano) {
+            margin: 10px 0;
+          }
+        }
+      }
+      > td:nth-child(1) {
+        @include screen-format(phone) {
+          border-top: 1px solid $color-table-line;
+        }
+        @include screen-format(nano) {
+          border-top: 1px solid $color-table-line;
+        }
+      }
+    }
+    > tr:hover {
+      > td {
+        @include screen-format(phone) {
+          background: none;
+          cursor: default;
+        }
+        @include screen-format(nano) {
+          background: none;
+          cursor: default;
+        }
+      }
+    }
+    > tr:nth-child(3n) {
+      @include screen-format(phone) {
+        @include span-columns(12 omega, 12);
+      }
+      @include screen-format(nano) {
+        @include span-columns(12 omega, 12);
+      }
+    }
+    > tr.md-table-convertible-current-row {
+      > td {
+        @include screen-format(phone) {
+          background: $white;
+        }
+        @include screen-format(nano) {
+          background: $white;
+        }
+      }
+    }
+  }
 }
