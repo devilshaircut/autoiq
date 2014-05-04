@@ -72,7 +72,7 @@
 
     <div class="md-table-tools">
       <div class="md-table-tools-left">
-        <label>We found {{results.length || 0}} great cars for you.</label>
+        <label>We found {{(results | filter:showRow).length || 0}} great cars for you.</label>
       </div>
       <!-- .md-table-tools-left -->
       <div class="md-table-tools-right">
@@ -108,7 +108,7 @@
         </thead>
         <tbody>
 
-          <tr ng-repeat="row in results" ng-show="showRow(row)">
+          <tr ng-repeat="row in (results | filter:showRow)">
             <td><img ng-src="{{ row.picture }}" height="50" width="50" /></td>
             <td>{{ row.make }}</td>
             <td>{{ row.model }}</td>
