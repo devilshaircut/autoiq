@@ -99,3 +99,23 @@ button.ns-button-cta {
     line-height: 50px;
   }
 }
+
+
+
+.ns-button.ns-button-cta.ns-button-red,
+input[type="submit"].ns-button-cta.ns-button-red,
+input[type="button"].ns-button-cta.ns-button-red,
+input[type="reset"].ns-button-cta.ns-button-red,
+button.ns-button-cta.ns-button-red {
+  @include box-shadow(0 -5px 0 $color-red-dark inset);
+}
+
+
+
+
+
+
+
+
+
+
