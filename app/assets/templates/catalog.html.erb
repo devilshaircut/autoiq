@@ -1,7 +1,4 @@
 
-
-
-
 <section id="ns-catalog-facets" class="ns-section-main">
   <div class="ns-section-wrapper">
 
@@ -15,22 +12,26 @@
       <div id="ns-catalog-facets-1" ng-class="{ 'ns-facets-in' : pageReady == true }">
         <div id="ns-catalog-facets-year">
           <label>Year:</label>
-          <input type="text" />
+          <input type="text" ng-model="model.year" />
         </div>
         <!-- #ns-catalog-facets-year -->
         <div id="ns-catalog-facets-zip">
           <label>Zip:</label>
-          <input type="text" />
+          <input type="text" ng-model="model.zipcode" />
         </div>
         <!-- #ns-catalog-facets-zip -->
         <div id="ns-catalog-facets-make">
           <label>Make:</label>
-          <input type="text" />
+          <select class="ns-section-input" ng-model="model.make">
+            <option ng-repeat="option in car_makes" value="{{option}}">{{option}}</option>
+          </select>
         </div>
         <!-- #ns-catalog-facets-make -->
         <div id="ns-catalog-facets-model">
           <label>Model:</label>
-          <input type="text" />
+          <select class="ns-section-input" ng-disabled="current_car_models.length == 0" ng-model="model.model">
+            <option ng-repeat="option in current_car_models" value="{{option}}">{{option}}</option>
+          </select>
         </div>
         <!-- #ns-catalog-facets-model -->
       </div>
@@ -38,12 +39,12 @@
       <div id="ns-catalog-facets-2" ng-class="{ 'ns-facets-in' : pageReady == true }">
         <div id="ns-catalog-facets-price-low">
           <label>Price (Low):</label>
-          <input type="text" />
+          <input type="text" ng-model="model.price_low" />
         </div>
         <!-- #ns-catalog-facets-price-low -->
         <div id="ns-catalog-facets-price-high">
           <label>Price (High):</label>
-          <input type="text" />
+          <input type="text" ng-model="model.price_high" />
         </div>
         <!-- #ns-catalog-facets-price-high -->
         <div id="ns-catalog-facets-submit">
@@ -99,55 +100,34 @@
             <th>Colors:</th>
             <th>Year:</th>
             <th>Zip:</th>
-            <th>Miles:</th>
+            <th>VIN:</th>
             <th>Price:</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
+
+          <tr ng-repeat="row in results" ng-show="showRow(row)">
+            <td>{{ row.make }}</td>
+            <td>{{ row.model }}</td>
+            <td>{{ row.exteriorGenericColor }}</td>
+            <td>{{ row.year }}</td>
+            <td>{{ row.zipcode }}</td>
+            <td>{{ row.vin }}</td>
+            <td>${{ row.inventoryPrice | number }}</td>
+            <td><a href="{{row.referral}}">More Info</a></td>
           </tr>
-          <tr>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
+
+          <tr ng-hide="results == null || results != []">
+            <td colspan="8" style="text-align: center;">
+              No results were found for this search. Please try again!
+            </td>
           </tr>
-          <tr>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-          </tr>
-          <tr>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-          </tr>
-          <tr>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
-            <td>TEST</td>
+
+          <tr ng-hide="results != null">
+            <td colspan="8" style="text-align: center;">
+              Please enter in search criteria above!
+            </td>
           </tr>
         </tbody>
       </table>

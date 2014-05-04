@@ -2,8 +2,7 @@ module Autoiq
   class << self
     
     def access_token(renew=false)
-      Rails.cache.delete([self, "access_token"]) if renew
-      Rails.cache.fetch([self, "access_token"], :expires_in => 1.hour) { get_access_token_from_edmunds }
+      get_access_token_from_edmunds
     end
     
     def inventory_by_zipcode(opts={})
@@ -17,18 +16,17 @@ module Autoiq
       request = Typhoeus::Request.new(
         EDMUNDS_ENDPOINT + '/api/inventory/v1/getall?' + body + "basicFilter=make:%22#{opts[:make]}%22",
         method: :get,
-        headers: { "Authorization" => "Bearer " + self.access_token }
+        headers: { "Authorization" => "Bearer #{Autoiq.access_token}"  }
       )
       response = request.run
       
       # If request fails, generate new token and re-execute.
       if response.success?
         result = JSON.parse(response.body, :symbolize_names => true)
-        result[:photos] = get_all_photos(result)
+        result[:photos] = get_all_photos(result) if result[:totalCount] > 0
         return result
       else
-        self.access_token(renew=true)
-        return inventory_by_zipcode(opts)
+        return []
       end
     end
     
@@ -45,17 +43,20 @@ module Autoiq
     end
     
     def get_all_photos(inventory)
+      return {} if inventory[:resultsList].length == 0
       style_ids = inventory[:resultsList].select{ |i| i[:styleId] != "N/A" }.map{ |s| s[:styleId] }.uniq
       all_photos = {}
       style_ids.each do |s|
         all_photos[s] = Rails.cache.fetch([s, "photo"], :expires_in => 1.hour) do
-                          sources = find_photos_by_shot_type(s)[0][:photoSrcs]
-                          sizes = {}
-                          sources.each{ |source| sizes[source.split("_")[-1].split('.')[0].to_i] = source }
-                          largest_size = sizes.keys.max
-                          photo = EDMUNDS_MEDIA_ENDPOINT + sizes[largest_size]
-                          photo
-                        end
+          photos = find_photos_by_shot_type(s)
+          break if photos.empty?
+          sources = photos[0][:photoSrcs]
+          sizes = {}
+          sources.each{ |source| sizes[source.split("_")[-1].split('.')[0].to_i] = source }
+          largest_size = sizes.keys.max
+          photo = EDMUNDS_MEDIA_ENDPOINT + sizes[largest_size]
+          photo
+        end
       end
       all_photos
     end
