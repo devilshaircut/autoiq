@@ -95,7 +95,7 @@
         </colgroup>
         <thead>
           <tr>
-            <th></th>
+            <th>Image:</th>
             <th>Make:</th>
             <th>Model:</th>
             <th>Colors:</th>
@@ -109,7 +109,7 @@
         <tbody>
 
           <tr ng-repeat="row in results" ng-show="showRow(row)">
-            <td><img ng-src="{{ row.picture }}" height="50" width="50" /></td>
+            <td><img ng-src="{{ row.picture }}" /></td>
             <td>{{ row.make }}</td>
             <td>{{ row.model }}</td>
             <td>{{ row.exteriorGenericColor }}</td>

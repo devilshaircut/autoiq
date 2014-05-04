@@ -1718,6 +1718,10 @@ table.md-table-convertible {
           display: none;
           visibility: hidden;
         }
+        > img {
+          display: block;
+          height: 40px;
+        }
       }
     }
     > tr:nth-child(odd) {
@@ -1793,6 +1797,12 @@ table.md-table-convertible.md-table-convertible-toggle {
         input[type="submit"],
         button {
           margin: 10px 0;
+        }
+        > img {
+          height: auto;
+          min-height: 220px;
+          width: 100%;
+          margin: 20px 0;
         }
       }
       > td:nth-child(1) {
