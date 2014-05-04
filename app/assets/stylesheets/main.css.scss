@@ -1398,6 +1398,16 @@ ol#ns-section-selector {  z-index: 600; }
     font-size: 60px;
     line-height: 70px;
     text-transform: uppercase;
+    > span {
+      position: relative;
+      top: 100px;
+      @include transition-property(top);
+      @include transition-duration(.33s);
+      @include transition-timing-function(cubic-bezier(0.17, 0.67, 0.63, 1.56));
+    }
+    > span.ns-title-bounce {
+      top: 0;
+    }
   }
   form {
     @include span-columns(8 omega, 12);
@@ -1437,15 +1447,26 @@ ol#ns-section-selector {  z-index: 600; }
       margin: 0 0 29px 0;
       @include span-columns(8 omega, 8);
       > #ns-catalog-facets-year {
+        position: relative;
+        left: 300%;
         @include span-columns(2, 10);
       }
       > #ns-catalog-facets-make {
+        position: relative;
+        left: 300%;
+        @include transition-delay(.25s);
         @include span-columns(3, 10);
       }
       > #ns-catalog-facets-model {
+        position: relative;
+        left: 300%;
+        @include transition-delay(.5s);
         @include span-columns(3, 10);
       }
       > #ns-catalog-facets-zip {
+        position: relative;
+        left: 300%;
+        @include transition-delay(.75s);
         @include span-columns(2 omega, 10);
       }
     }
@@ -1453,10 +1474,36 @@ ol#ns-section-selector {  z-index: 600; }
       margin: 0 0 20px 0;
       @include span-columns(10 omega, 10);
       > #ns-catalog-facets-price-low {
+        position: relative;
+        left: 300%;
+        @include transition-delay(1s);
         @include span-columns(5, 10);
       }
       > #ns-catalog-facets-price-high {
+        position: relative;
+        left: 300%;
+        @include transition-delay(1.25s);
         @include span-columns(5 omega, 10);
+      }
+    }
+    > #ns-catalog-facets-1.ns-facets-in {
+      > #ns-catalog-facets-year,
+      > #ns-catalog-facets-make,
+      > #ns-catalog-facets-model,
+      > #ns-catalog-facets-zip {
+        left: 0;
+        @include transition-property(left);
+        @include transition-duration(.5s);
+        @include transition-timing-function(ease-out);
+      }
+    }
+    > #ns-catalog-facets-2.ns-facets-in {
+      > #ns-catalog-facets-price-low,
+      > #ns-catalog-facets-price-high {
+        left: 0;
+        @include transition-property(left);
+        @include transition-duration(.5s);
+        @include transition-timing-function(ease-out);
       }
     }
   }

@@ -1,4 +1,4 @@
-AngularApp.controller("catalogController", ["$scope", "httpService", function($scope, httpService) {
+AngularApp.controller("catalogController", ["$scope", "httpService", "$timeout", function($scope, httpService, $timeout) {
 
   // $scope.model = {};
 
@@ -16,6 +16,18 @@ AngularApp.controller("catalogController", ["$scope", "httpService", function($s
   // httpService.getApiEndpoint(apiEndpoint).success(getModelSuccess);
 
   $scope.tableView = false;
+
+  $scope.pageTitle = "Find A Car".split("");
+  console.log($scope.pageTitle);
+
+  $scope.pageReady = false;
+  $scope.bounceReady = false;
+  $scope.animateIn = function() {
+    $scope.pageReady = true;
+    $scope.bounceReady = true;
+    // $timeout( function() { $scope.bounceReady == false }, 250);
+  };
+  $timeout($scope.animateIn, 250);
 
 }]);
 

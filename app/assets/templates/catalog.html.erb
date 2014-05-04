@@ -5,10 +5,14 @@
 <section id="ns-catalog-facets" class="ns-section-main">
   <div class="ns-section-wrapper">
 
-    <h1>Find A Car</h1>
+    <h1>
+      <span
+        ng-repeat="letter in pageTitle track by $index"
+        ng-class="{ 'ns-title-bounce': bounceReady == true }">{{letter}}</span>
+    </h1>
 
     <form>
-      <div id="ns-catalog-facets-1">
+      <div id="ns-catalog-facets-1" ng-class="{ 'ns-facets-in' : pageReady == true }">
         <div id="ns-catalog-facets-year">
           <label>Year:</label>
           <input type="text" />
@@ -31,7 +35,7 @@
         <!-- #ns-catalog-facets-zip -->
       </div>
       <!-- #ns-catalog-facets-1 -->
-      <div id="ns-catalog-facets-2">
+      <div id="ns-catalog-facets-2" ng-class="{ 'ns-facets-in' : pageReady == true }">
         <div id="ns-catalog-facets-price-low">
           <label>Price (Low):</label>
           <input type="text" />
