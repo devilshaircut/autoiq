@@ -1169,11 +1169,31 @@ nav.ns-section-main {
 
 ol#ns-section-selector {  z-index: 600; }
 
-
-
-
-
-
-
-
-
+.list {
+	position: relative;
+	p {
+		padding: 10px;
+		color: white;	
+	}
+}
+.picture {
+	background: image-url('Audi.jpg');
+	width: 200px;
+	height: 200px;
+	background-size: 100% 100%;
+}
+.inventory {
+	padding-top: 30px;
+	.row {
+		margin-bottom: 15px;
+	}
+	.info {
+		background-color: #B28500;
+	}
+	background-color:#2B3046;
+	.btn {
+		float:right;
+		margin-top: 150px;
+		margin-right: 19px;
+	}
+}
