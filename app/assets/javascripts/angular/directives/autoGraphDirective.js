@@ -10,7 +10,7 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
       var vis = d3.select( element[0] )
         .append("svg")
         .attr("width", "100%")
-        .attr("height", 500)
+        .attr("height", "100%")
         .attr("background-color", "rgb(246, 95, 88)");
 
       
@@ -37,7 +37,7 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
 
       function drawTheGraph(miles, value){
         var centerVal   = Math.round( parseInt(miles) / 1000 ) * 1000;
-        var h           = 500;
+        var h           = $( element[0] ).height();
         var w           = $( element[0] ).width();
 
         var graphRange  = 9000;

@@ -24,14 +24,14 @@
     <img id="ns-overview-pic" src="/assets/ns-car.jpg" />
     <div class="ns-section-wrapper">
       <h1>{{ model.car }}</h1>
-      <h2>Estimated Value: ${{ model.price.usedPrivateParty }}</h2>
+      <h2>Estimated Value: ${{ model.price | number }}</h2>
     </div>
     <!-- .ns-section-wrapper -->
   </section>
   <!-- #ns-section-overview .ns-section-main -->
 
   <section id="ns-section-value" class="ns-section-main">
-    <auto-graph ng-attr-price="{{ model.price.usedPrivateParty }}" ng-attr-miles="{{ model.mileage }}" style="height: 500px; display: block;"></auto-graph>
+    <auto-graph ng-attr-price="{{ model.price }}" ng-attr-miles="{{ model.mileage }}" style="height: 100%; display: block;"></auto-graph>
   </section>
   <!-- #ns-section-value .ns-section-main -->
 
