@@ -14,30 +14,6 @@
  */
 
 
-auto-graph{
-  position: relative;
-  text-transform:uppercase;
-  color: #ffffff; 
-  text{
-    stroke: #ffffff;
-    stroke-width: 1.2;
-  } 
-  
-  svg{
-    position: relative;
-    background-color: rgb(246, 95, 88);
-  }
-
-  h1{
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    margin-top: 70px;
-    font-size: 60px;
-    line-height: 60px;
-    z-index: 9999;
-  }
-}
 
 
 path.plotline {
