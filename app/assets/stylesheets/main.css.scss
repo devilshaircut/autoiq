@@ -389,6 +389,14 @@ input {
   > section.ns-section-main {
     height: 100%;
     min-height: 100%;
+    @include screen-format(phone) {
+      height: auto;
+      min-height: 0;
+    }
+    @include screen-format(nano) {
+      height: auto;
+      min-height: 0;
+    }
     .ns-button.ns-button-red.ns-button-cta {
       width: 100%;
       text-align: center;
@@ -780,11 +788,19 @@ ol#ns-section-selector.ns-section-shadow-state {
     display: inline-block;
     width: 100%;
     margin: 0 auto;
-    @include filter(grayscale(100%));
-    @include opacity(.5);
     position: relative;
     top: 50%;
     @include translateY(-52%);
+    @include filter(grayscale(100%));
+    @include opacity(.5);
+    @include screen-format(phone) {
+      top: 0;
+      @include translateY(0);
+    }
+    @include screen-format(nano) {
+      top: 0;
+      @include translateY(0);
+    }
   }
   .ns-section-wrapper {
     width: 100%;
@@ -793,11 +809,11 @@ ol#ns-section-selector.ns-section-shadow-state {
     @include translateY(-70%);
     @include box-sizing(border-box);
     @include screen-format(phone) {
-      top: 150px;
+      top: 120px;
       @include translateY(0);
     }
     @include screen-format(nano) {
-      top: 150px;
+      top: 120px;
       @include translateY(0);
     }
     > h1 {
@@ -934,6 +950,7 @@ ol#ns-section-selector.ns-section-shadow-state {
 
 #ns-section-specs {
   background: $color-blue-dark;
+  height: auto !important;
   > .ns-section-wrapper {
     min-height: 100%;
     text-align: center;
