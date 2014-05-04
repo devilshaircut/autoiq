@@ -275,6 +275,7 @@ nav.ns-section-main.ns-nav-shadow-state {
   float: left;
   width: 100%;
   height: 100%;
+  background: #d4d6da;
 }
 #ns-page-main {   // This holds all the content that can slide right when the slider is activated in "mobile mode".
   display: inline-block;
@@ -583,9 +584,9 @@ ul#wrapper {
     left: 0;
     @include rotate(45deg);
     @include transition-property(top, left, rotate);
-    @include transition-duration(1s, 1s);
+    @include transition-duration(.5s, .5s);
     @include transition-delay(0, 0);
-    @include transition-timing-function(ease-out, ease-out, ease-in);
+    @include transition-timing-function(ease-out, ease-in, ease-in);
   }
   img#ns-options-right {
     width: 25%;
@@ -594,9 +595,9 @@ ul#wrapper {
     right: 0;
     @include rotate(-45deg);
     @include transition-property(top, right, rotate);
-    @include transition-duration(1s, 1s);
+    @include transition-duration(.75s, .75s);
     @include transition-delay(0, 0);
-    @include transition-timing-function(ease-out, ease-out, ease-in);
+    @include transition-timing-function(ease-out, ease-in, ease-in);
   }
   img#ns-options-left.ns-options-left-collapse {
     width: 25%;
@@ -710,7 +711,7 @@ ul#wrapper {
 
 
 
-.title{
+.title {
   width: 100%;
   margin-bottom: 20px;
   font-size: 60px;
@@ -718,6 +719,16 @@ ul#wrapper {
   color: $white;
   text-transform: uppercase;
   text-align: center;
+  position: relative;
+  top: 105px;
+  @include opacity(0);
+  @include transition-property(top, opacity);
+  @include transition-duration(.33s, .33s);
+  @include transition-timing-function(cubic-bezier(0.17, 0.67, 0.63, 1.56), cubic-bezier(0.17, 0.67, 0.63, 1.56));
+}
+.title.header-here {
+  top: 0;
+  @include opacity(1);
 }
 
 
@@ -1600,14 +1611,64 @@ ol#ns-section-selector {  z-index: 600; }
 
 
 // This type of data table is convertible to a tiled list view. The tiled list view is togged on by adding the "md-table-convertible-toggle" class to this table tag.
+
+.md-table-tools {
+  margin: 40px 0 10px 0;
+  @include span-columns(12 omega, 12);
+  .md-table-tools-left {
+    display: inline-block;
+    float: left;
+    > label {
+      color: $color-body-text;
+      font-family: $font-header;
+      text-transform: uppercase;
+      font-size: 20px;
+      line-height: 30px;
+      position: relative;
+      top: 4px;
+    }
+    @include screen-format(phone) {
+      width: 100%;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+    @include screen-format(nano) {
+      width: 100%;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+  }
+  .md-table-tools-right {
+    display: inline-block;
+    float: right;
+    @include screen-format(phone) {
+      width: 100%;
+      margin: 0 0 20px 0;
+    }
+    @include screen-format(nano) {
+      width: 100%;
+      margin: 0 0 20px 0;
+    }
+    > button {
+      @include screen-format(phone) {
+        width: 100%;
+      }
+      @include screen-format(nano) {
+        width: 100%;
+      }
+    }
+  }
+}
+
 table.md-table-backoffice,
 table.md-table-convertible {
   width: 100%;
-  margin: 0 0 20px 0;
+  margin: 0 0 40px 0;
   background: $white;
   color: $color-body-text;
   font-size: 16px;
   line-height: 30px;
+  @include border-radius(5px);
   > thead {
     > tr {
       > th {

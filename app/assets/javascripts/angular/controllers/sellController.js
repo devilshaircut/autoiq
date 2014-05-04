@@ -30,13 +30,34 @@ AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataSer
   });
 
   // $timeout( function() { $("ul#wrapper > li").addClass("wrapper-here"); }, 2000 );
+  $scope.optionsSeen = true;
+  $scope.mileageSeen = true;
+  $scope.conditionSeen = true;
+  $scope.zipSeen = true;
 
-    $(window).scroll(function() {
-      if ( $("#ns-section-condition").position().top < $(window).scrollTop() + 1 ) {
-        $("ul#wrapper > li").addClass("wrapper-here");
-        $("ul#wrapper > li").addClass("wrapper-here");
-      }
-    });
+  $(window).scroll(function() {
+    if ( $("#ns-section-condition").position().top < $(window).scrollTop() + 1 ) {
+      $("ul#wrapper > li").addClass("wrapper-here");
+    }
+    if ( $scope.optionsSeen && $("#ns-section-options").position().top < $(window).scrollTop() + 150 ) {
+      $("#ns-section-options h3.title").addClass("header-here");
+      $scope.optionsSeen = false;
+    }
+    if ( $scope.mileageSeen && $("#ns-section-mileage").position().top < $(window).scrollTop() + 150 ) {
+      $("#ns-section-mileage h3.title").addClass("header-here");
+      $scope.mileageSeen = false;
+    }
+    if ( $scope.conditionSeen && $("#ns-section-condition").position().top < $(window).scrollTop() + 150 ) {
+      $("#ns-section-condition h3.title").addClass("header-here");
+      $scope.conditionSeen = false;
+    }
+    if ( $scope.zipSeen && $("#ns-section-zip").position().top < $(window).scrollTop() + 150 ) {
+      $("#ns-section-zip h3.title").addClass("header-here");
+      $scope.zipSeen = false;
+    }
+  });
+
+  $timeout( function() { $("#ns-section-vin h3.title").addClass("header-here"); }, 1);
 
   var getVinLookupSuccess = function(payload, status) {
 
