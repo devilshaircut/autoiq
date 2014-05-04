@@ -14,7 +14,8 @@ AngularApp.controller("sellController", ["$scope", "httpService", function($scop
 
   // // Initiate the HTTP request.
   // httpService.getApiEndpoint(apiEndpoint).success(getModelSuccess);
-  
+
+  smoothScroll.init();
 
 
 }]);

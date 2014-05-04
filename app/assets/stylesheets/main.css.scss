@@ -420,32 +420,36 @@ ul#wrapper {
 }
 
 
-.background-blue {
+#ns-section-vin {
   background: #63DDD6;
 }
-.background-red {
+#ns-section-options,
+#ns-section-submit {
   background: #F45F5C;
 }
-.background-yellow {
+#ns-section-mileage,
+#ns-section-zip {
   background: #F8E193;
 }
-.background-black {
+#ns-section-condition {
   background: #2A3045;
 }
-.background-light-blue {
-  background: #5FD5CE;
-}
-.background-blue,
-.background-red,
-.background-yellow,
-.background-black,
-.background-light-blue {
+
+
+
+#ns-section-vin,
+#ns-section-options,
+#ns-section-submit,
+#ns-section-mileage,
+#ns-section-zip,
+#ns-section-condition {
   > .ns-section-wrapper {
     position: relative;
     top: 50%;
     @include translateY(-66%);
   }
 }
+
 
 
 
@@ -742,6 +746,9 @@ ol#ns-section-selector {
     font-family: $font-accent;
     text-transform: uppercase;
     font-weight: 700;
+    > a {
+      color: $white;
+    }
     > span.ns-selection-selector-icon {
       display: inline-block;
       width: 16px;
