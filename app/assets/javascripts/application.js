@@ -26,6 +26,7 @@
 //
 //  ANGULAR: Angular App - Services
 //= require angular/services/httpService
+//= require angular/services/sharedDataService
 //
 //  ANGULAR: Angular App - Controllers
 //= require angular/controllers/sampleController

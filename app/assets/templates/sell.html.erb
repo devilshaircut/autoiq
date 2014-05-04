@@ -1,3 +1,4 @@
+
 <ol id="ns-section-selector">
   <li>
     <a data-scroll href="#ns-section-vin">VIN Number</a>
@@ -32,7 +33,7 @@
     <div class="ns-section-wrapper">
       <div id="vin">
         <h3 class="title">Vin Number</h3>
-        <input type="text" class="ns-section-input" placeholder="Enter Vin Number">
+        <input type="text" class="ns-section-input" placeholder="Enter Vin Number" ng-model="model.vin_number">
       </div>
     </div>
     <!-- .ns-section-wrapper -->
@@ -43,10 +44,8 @@
     <div class="ns-section-wrapper">
       <h3 class="title">Options/Trim</h3>
       <div id="options">
-        <select id="trim" class="ns-section-input">
-          <option value="0">Prestige</option>
-          <option value="1">Premium</option>
-          <option value="2">Standard</option>
+        <select id="trim" class="ns-section-input" ng-disabled="model.trim_options.length == 0" ng-model="model.trim">
+          <option ng-selected="{{model.trim_options.name == model.trim}}" ng-repeat="option in model.trim_options" value="{{option.id}}">{{option.name}}</option>
         </select>
       </div>
     </div>
@@ -58,7 +57,7 @@
     <div class="ns-section-wrapper">
       <div id="mileage">
         <h3 class="title">Mileage</h3>
-        <input type="text" class="ns-section-input" placeholder="Enter Mileage">
+        <input type="text" class="ns-section-input" placeholder="Enter Mileage" ng-model="model.mileage">
       </div>
     </div>
     <!-- .ns-section-wrapper -->
