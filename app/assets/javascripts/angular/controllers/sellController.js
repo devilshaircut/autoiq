@@ -35,6 +35,7 @@ AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataSer
     }
   };
 
+  smoothScroll.init();
 
 }]);
 

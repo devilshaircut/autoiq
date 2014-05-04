@@ -21,6 +21,8 @@ AngularApp.controller("summaryController", ["$scope", "httpService", "sharedData
     $scope.model.photo = "http://media.ed.edmunds-media.com" + payload[j].photoSrcs[0];
   });
 
+  smoothScroll.init();
+
 }]);
 
 
