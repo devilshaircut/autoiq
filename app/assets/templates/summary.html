@@ -21,7 +21,7 @@
 <div id="ns-scroll-2">
 
   <section id="ns-section-overview" class="ns-section-main">
-    <img id="ns-overview-pic" src="/assets/ns-car.jpg" />
+    <img id="ns-overview-pic" ng-src="{{ model.photo }}" />
     <div class="ns-section-wrapper">
       <h1>{{ model.car }}</h1>
       <h2>Estimated Value: ${{ model.price | number }}</h2>
