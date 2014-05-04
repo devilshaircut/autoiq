@@ -138,21 +138,19 @@ AngularApp.directive('autoGraph', ["$window", function($window) {
           }
         }
 
-        $(element[0]).prepend("<h1>Car Value vs Milage</h1>");
-
         $(".circle").each(function(){
           var event_div = $("<div class='tooltip'><div>"+$(this).attr("sell-title")+"</div>Ideal time to sell</div>");
           var sell_div  = $("<div class='selltip'>Similar car sold at $" + numberWithCommas(parseInt($(this).attr("sell-price")) + Math.round(Math.random()*100) ) +"</div>");
-          var coords    = $(this).offset();
+          var coords    = $(this).position();
 
-          $(element[0]).append(event_div).append(sell_div);
+          $(element[0]).prepend(event_div).prepend(sell_div);
 
-          var position = { top: coords.top, left: coords.left };
-
-          event_div.css("bottom", 500 - position.top - 40 ).css("left", position.left - (event_div.width()/2 - 10));
-          sell_div.css("bottom", 500 - position.top + 55 ).css("left", position.left + 40);
+          event_div.css("top", coords.top + 40 ).css("left", coords.left - (event_div.width()/2 ));
+          sell_div.css("top", coords.top - 15).css("left", coords.left + 40);
 
         });
+
+        $(element[0]).prepend("<h1>Car Value vs Mileage</h1>");
       }
 
 
