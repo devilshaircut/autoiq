@@ -1485,6 +1485,9 @@ ol#ns-section-selector {  z-index: 600; }
       font-size: 24px;
       line-height: 30px;
     }
+    select {
+      height: 60px;
+    }
     button {
       width: 100%;
       padding: 14px 9px 16px 9px;
@@ -1515,11 +1518,6 @@ ol#ns-section-selector {  z-index: 600; }
       > #ns-catalog-facets-year {
         position: relative;
         left: 300%;
-        @include span-columns(2, 10);
-      }
-      > #ns-catalog-facets-zip {
-        position: relative;
-        left: 300%;
         @include transition-delay(.25s);
         @include span-columns(2, 10);
       }
@@ -1533,7 +1531,13 @@ ol#ns-section-selector {  z-index: 600; }
         position: relative;
         left: 300%;
         @include transition-delay(.75s);
-        @include span-columns(3 omega, 10);
+        @include span-columns(3, 10);
+      }
+      > #ns-catalog-facets-zip {
+        position: relative;
+        left: 300%;
+        @include transition-delay(1s);
+        @include span-columns(2 omega, 10);
       }
     }
     > #ns-catalog-facets-2 {

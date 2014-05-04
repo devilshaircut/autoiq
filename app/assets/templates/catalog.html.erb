@@ -15,11 +15,6 @@
           <input type="text" ng-model="model.year" />
         </div>
         <!-- #ns-catalog-facets-year -->
-        <div id="ns-catalog-facets-zip">
-          <label>Zip:</label>
-          <input type="text" ng-model="model.zipcode" />
-        </div>
-        <!-- #ns-catalog-facets-zip -->
         <div id="ns-catalog-facets-make">
           <label>Make:</label>
           <select class="ns-section-input" ng-model="model.make">
@@ -34,6 +29,11 @@
           </select>
         </div>
         <!-- #ns-catalog-facets-model -->
+        <div id="ns-catalog-facets-zip">
+          <label>Zip:</label>
+          <input type="text" ng-model="model.zipcode" />
+        </div>
+        <!-- #ns-catalog-facets-zip -->
       </div>
       <!-- #ns-catalog-facets-1 -->
       <div id="ns-catalog-facets-2" ng-class="{ 'ns-facets-in' : pageReady == true }">
