@@ -675,6 +675,12 @@ ol.ns-module-triple {
 main#ns-home {
   height: 100%;
   background: $color-red-medium;
+  @include screen-format(phone) {
+    min-height: 1000px;
+  }
+  @include screen-format(nano) {
+    min-height: 1000px;
+  }
   #ns-home-container {
     display: inline-block;
     float: left;
