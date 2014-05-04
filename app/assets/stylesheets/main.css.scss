@@ -853,6 +853,9 @@ ol#ns-section-selector.ns-section-shadow-state {
   background: $color-yellow-light;
   .ns-section-wrapper {
     background: transparent url("/assets/ns-action-background.png") no-repeat center 177px;
+    position: relative;
+    top: 50%;
+    @include translateY(-55%);
     @include screen-format(phone) {
       background: none;
     }
@@ -950,8 +953,9 @@ ol#ns-section-selector.ns-section-shadow-state {
 
 #ns-section-specs {
   background: $color-blue-dark;
-  height: auto !important;
+  min-height: 100%;
   > .ns-section-wrapper {
+    height: 100%;
     min-height: 100%;
     text-align: center;
     background: transparent url("/assets/ns-specs-background.png") repeat-y center center;
