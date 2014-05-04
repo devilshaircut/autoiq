@@ -1769,10 +1769,10 @@ table.md-table-convertible.md-table-convertible-toggle {
     visibility: hidden;
   }
   > tbody {
+    padding: 0 20px;
     @include box-sizing(border-box);
     @include span-columns(12 omega, 12);
     > tr {
-      padding: 20px;
       margin-bottom: 20px;
       background: $white;
       @include border-radius(2px);
@@ -1800,13 +1800,13 @@ table.md-table-convertible.md-table-convertible-toggle {
         }
         > img {
           height: auto;
-          min-height: 220px;
+          min-height: 230px;
           width: 100%;
           margin: 20px 0;
         }
       }
       > td:nth-child(1) {
-        border-top: 1px solid $color-table-line;
+        
       }
     }
     > tr:nth-child(3n) {
