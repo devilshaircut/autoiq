@@ -1,4 +1,4 @@
-AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataService", function($scope, httpService, sharedDataService) {
+AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataService", "$timeout", function($scope, httpService, sharedDataService, $timeout) {
 
   smoothScroll.init();
 
@@ -23,7 +23,17 @@ AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataSer
     
   });
 
+  // $timeout( function() { $("ul#wrapper > li").addClass("wrapper-here"); }, 2000 );
+
+    $(window).scroll(function() {
+      if ( $("#ns-section-condition").position().top < $(window).scrollTop() ) {
+        $("ul#wrapper > li").addClass("wrapper-here");
+        $("ul#wrapper > li").addClass("wrapper-here");
+      }
+    });
+
   var getVinLookupSuccess = function(payload, status) {
+
     if( typeof $scope.model.trim_options == "undefined" ) $scope.model.trim_options = [];
 
     for( var i in payload.years[0].styles ){
@@ -35,7 +45,35 @@ AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataSer
     }
   };
 
+  $scope.letterDown = false;
+  $scope.animateLetter = function() {
+    $scope.letterDown = true;
+    $timeout( function() { $scope.letterDown = false; }, 500);
+  };
+
+  $scope.letterRight = false;
+  $scope.animateVin = function() {
+    $scope.letterRight = true;
+    $timeout( function() { $scope.letterRight = false; }, 500);
+  };
+
+  $scope.seatbeltLeft = false;
+  $scope.seatbeltRight = false;
+  $scope.animateSeatbelt = function() {
+    $scope.seatbeltRight = true;
+    $scope.seatbeltLeft = true;
+  };
+
+  $scope.wrapperHere = false;
+  $scope.moveWrapper = function() {
+    $scope.wrapperHere = true;
+  };
+
+
+
+
   smoothScroll.init();
+
 
 }]);
 

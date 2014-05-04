@@ -1,6 +1,7 @@
 AngularApp.config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/', {
     templateUrl: '<%= asset_path("index.html") %>',
+    controller: 'indexController',
     activetab: 'index'
   }).
   when('/summary', {
@@ -40,6 +41,7 @@ AngularApp.config(function($routeProvider, $locationProvider) {
   }).
   otherwise({
     templateUrl: '<%= asset_path("index.html") %>',
+    controller: 'indexController',
     activetab: 'index'
   });
   $locationProvider.html5Mode(true);

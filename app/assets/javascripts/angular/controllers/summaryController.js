@@ -23,6 +23,15 @@ AngularApp.controller("summaryController", ["$scope", "httpService", "sharedData
 
   smoothScroll.init();
 
+
+
+
+
+
+
+
+
+
 }]);
 
 

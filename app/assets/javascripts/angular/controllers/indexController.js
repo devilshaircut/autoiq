@@ -1,4 +1,4 @@
-AngularApp.controller("indexController", ["$scope", "httpService", function($scope, httpService) {
+AngularApp.controller("indexController", ["$scope", "httpService", "$timeout", function($scope, httpService, $timeout) {
 
   // $scope.model = {};
 
@@ -14,6 +14,12 @@ AngularApp.controller("indexController", ["$scope", "httpService", function($sco
 
   // // Initiate the HTTP request.
   // httpService.getApiEndpoint(apiEndpoint).success(getModelSuccess);
+
+  $scope.pageReady = false;
+  $scope.animateIn = function() {
+    $scope.pageReady = true;
+  };
+  $timeout($scope.animateIn, 1000);
 
 }]);
 

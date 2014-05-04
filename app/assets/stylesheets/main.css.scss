@@ -238,9 +238,13 @@ nav.ns-section-main {
         display: inline-block;
         float: left;
         height: $height-top-bar;
-        margin: 0 0 0 50px;
+        margin: 0 0 0 40px;
         line-height: $height-top-bar;
         color: $color-top-bar-text;
+        font-family: $font-accent;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
         @include screen-format(phone) {
           width: 100%;
           height: $height-top-bar-collapsed;
@@ -474,6 +478,33 @@ ul#wrapper {
       width: 100%;
     }
   }
+  li:nth-child(1),
+  li:nth-child(3),
+  li:nth-child(5) {
+    position: relative;
+    top: -800px;
+    @include transition-property(top);
+    @include transition-duration(.5s);
+    @include transition-delay(0);
+    @include transition-timing-function(ease-in);
+  }
+  li:nth-child(2),
+  li:nth-child(4) {
+    position: relative;
+    top: 800px;
+    @include transition-property(top);
+    @include transition-duration(.5s);
+    @include transition-delay(0);
+    @include transition-timing-function(ease-in);
+  }
+  > li:nth-child(1).wrapper-here,
+  > li:nth-child(3).wrapper-here,
+  > li:nth-child(5).wrapper-here,
+  > li:nth-child(2).wrapper-here,
+  > li:nth-child(4).wrapper-here {
+    top: 0;
+  }
+  
   li:nth-child(5n){
     @include span-columns(2 omega, 10);
     @include screen-format(phone) {
@@ -496,17 +527,145 @@ ul#wrapper {
 
 #ns-section-vin {
   background: #63DDD6;
+  > #ns-vin-effect {
+    display: inline-block;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    font-size: 780px;
+    line-height: 100%;
+    text-align: center;
+    color: $color-body-text;
+    font-family: $font-header;
+    font-weight: 600;
+    position: absolute;
+    top: -100%;
+    @include transition-property(top);
+    @include transition-duration(0);
+    @include transition-delay(0);
+    @include transition-timing-function(ease-in);
+    color: $color-teal-dark;
+    @include screen-format(phone) {
+      display: block;
+    }
+    @include screen-format(nano) {
+      display: block;
+    }
+  }
+  > #ns-vin-effect.ns-vin-effect-down {
+    top: 100%;
+    @include transition-duration(.5s);
+  }
 }
-#ns-section-options,
+
+
+
+#ns-section-options {
+  background: #F45F5C;
+  position: relative;
+  overflow: hidden;
+  img#ns-options-left {
+    width: 25%;
+    position: absolute;
+    top: 5%;
+    left: 0;
+    @include rotate(45deg);
+    @include transition-property(top, left, rotate);
+    @include transition-duration(1s, 1s);
+    @include transition-delay(0, 0);
+    @include transition-timing-function(ease-out, ease-out, ease-in);
+  }
+  img#ns-options-right {
+    width: 25%;
+    position: absolute;
+    top: 5%;
+    right: 0;
+    @include rotate(-45deg);
+    @include transition-property(top, right, rotate);
+    @include transition-duration(1s, 1s);
+    @include transition-delay(0, 0);
+    @include transition-timing-function(ease-out, ease-out, ease-in);
+  }
+  img#ns-options-left.ns-options-left-collapse {
+    width: 25%;
+    position: absolute;
+    top: 75%;
+    left: 30%;
+    @include rotate(0);
+  }
+  img#ns-options-right.ns-options-right-collapse {
+    width: 25%;
+    position: absolute;
+    top: 75%;
+    right: 30%;
+    @include rotate(0);
+  }
+}
 #ns-section-submit {
   background: #F45F5C;
 }
-#ns-section-mileage,
-#ns-section-zip {
+#ns-section-mileage {
   background: #F8E193;
+  overflow: hidden;
+  position: relative;
+  > #ns-mileage-effect {
+    display: inline-block;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    font-size: 780px;
+    line-height: 100%;
+    text-align: center;
+    color: $color-body-text;
+    font-family: $font-header;
+    font-weight: 600;
+    position: absolute;
+    top: -100%;
+    @include transition-property(top);
+    @include transition-duration(0);
+    @include transition-delay(0);
+    @include transition-timing-function(ease-in);
+    color: $color-yellow-dark;
+    @include screen-format(phone) {
+      display: block;
+    }
+    @include screen-format(nano) {
+      display: block;
+    }
+  }
+  > #ns-mileage-effect.ns-mileage-effect-down {
+    top: 100%;
+    @include transition-duration(.5s);
+  }
+}
+#ns-section-zip {
+  background: #63DDD6;
+  position: relative;
+  overflow: hidden;
+  > #ns-zip-pic {
+    display: inline-block;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    position: absolute;
+    @include filter(grayscale(100%));
+    @include opacity(.25);
+    @include screen-format(phone) {
+      display: block;
+    }
+    @include screen-format(nano) {
+      display: block;
+    }
+  }
+  .ns-section-wrapper {
+    .ns-section-input {
+      @include opacity(.8);
+    }
+  }
 }
 #ns-section-condition {
   background: #2A3045;
+  overflow: hidden;
 }
 
 
@@ -744,6 +903,10 @@ main#ns-home {
       position: relative;
       top: -150px;
       @include span-columns(4, 18);
+      @include transition-property(left, right);
+      @include transition-duration(.5s, .5s);
+      @include transition-delay(0, .5s);
+      @include transition-timing-function(ease-in, ease-in);
       @include screen-format(tablet) {
         display: inline-block;
         float: none;
@@ -772,7 +935,11 @@ main#ns-home {
         @include legacy-pie-clearfix;
       }
     }
+    > img#ns-seller-pic {
+      left: -25%;
+    }
     > img#ns-buyer-pic {
+      right: -25%;
       @include span-columns(4 omega, 18);
       @include screen-format(tablet) {
         display: inline-block;
@@ -802,6 +969,8 @@ main#ns-home {
         @include legacy-pie-clearfix;
       }
     }
+    > img#ns-seller-pic.ns-home-ready { left: 0; }
+    > img#ns-buyer-pic.ns-home-ready { right: 0; }
   }
 }
 
