@@ -22,6 +22,7 @@ module Shell
 
 
     # Precompile additional assets
+    config.assets.initialize_on_precompile=false  
     config.assets.precompile += %w( .svg .eot .woff .ttf )
 
     config.assets.paths   << Rails.root.join("app", "assets", 'fonts')

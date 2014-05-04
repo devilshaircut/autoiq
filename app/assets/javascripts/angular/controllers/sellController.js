@@ -12,6 +12,10 @@ AngularApp.controller("sellController", ["$scope", "httpService", "sharedDataSer
     }
   }, true);
 
+  $scope.$watch("model.mileage", function(newValue, oldValue){
+    if( typeof newValue == "string" ) $scope.model.mileage = parseInt( newValue.replace(",", "").replace(".", "") );
+  });
+
   $scope.$watch("model.zip", function(newValue, oldValue){
     if( $scope.model.trim && $scope.model.zip && $scope.model.mileage && $scope.model.zip.length == 5 ){
       httpService.getJsonpApiEndpoint(
