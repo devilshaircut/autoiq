@@ -7,7 +7,7 @@ end
 Shell::Application.routes.draw do
 
   root :to => "home#index"
-  get   '*path'     => "home#index", :constraints => RouteConstraint.new
+  get '*path' => "home#index", :constraints => RouteConstraint.new
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
