@@ -52,7 +52,13 @@ $color-blue-dark: #2a3045;
 $white: #ffffff;
 
 
-
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; } 
+}
 
 
 
@@ -355,12 +361,19 @@ input[type="week"].ns-section-input,
 select.ns-section-input,
 textarea.ns-section-input {
   width: 100%;
-  padding: 16px 0 0 0;
   font-size: 60px;
-  line-height: 70px;
+  line-height: 1.5em;
   color: $white;
   text-transform: uppercase;
   text-align: center;
+}
+
+input {
+  @include input-placeholder {
+    color: rgba(255, 255, 255, .33);
+    font-size: 60px;
+    line-height: 1.5em;
+  }
 }
 
 #ns-scroll {
