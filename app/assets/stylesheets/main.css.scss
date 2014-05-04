@@ -1459,6 +1459,22 @@ ol#ns-section-selector {  z-index: 600; }
       font-size: 24px;
       line-height: 30px;
     }
+    button {
+      width: 100%;
+      padding: 14px 9px 16px 9px;
+      color: $white;
+      text-transform: uppercase;
+      font-size: 24px;
+      line-height: 30px;
+      position: relative;
+      top: 37px;
+      @include screen-format(phone) {
+        margin: 0 0 60px 0;
+      }
+      @include screen-format(nano) {
+        margin: 0 0 60px 0;
+      }
+    }
     > #ns-catalog-facets-1 {
       margin: 0 0 29px 0;
       @include span-columns(8 omega, 8);
@@ -1498,24 +1514,28 @@ ol#ns-section-selector {  z-index: 600; }
       margin: 0 0 20px 0;
       @include span-columns(10 omega, 10);
       @include screen-format(phone) {
-        margin: 0 0 60px 0;
         @include span-columns(12 omega, 12);
       }
       @include screen-format(nano) {
-        margin: 0 0 60px 0;
         @include span-columns(12 omega, 12);
       }
       > #ns-catalog-facets-price-low {
         position: relative;
         left: 300%;
         @include transition-delay(1s);
-        @include span-columns(5, 10);
+        @include span-columns(4, 10);
       }
       > #ns-catalog-facets-price-high {
         position: relative;
         left: 300%;
         @include transition-delay(1.25s);
-        @include span-columns(5 omega, 10);
+        @include span-columns(4, 10);
+      }
+      > #ns-catalog-facets-submit {
+        position: relative;
+        left: 300%;
+        @include transition-delay(1.5s);
+        @include span-columns(2 omega, 10);
       }
     }
     > #ns-catalog-facets-1.ns-facets-in {
@@ -1539,7 +1559,8 @@ ol#ns-section-selector {  z-index: 600; }
     }
     > #ns-catalog-facets-2.ns-facets-in {
       > #ns-catalog-facets-price-low,
-      > #ns-catalog-facets-price-high {
+      > #ns-catalog-facets-price-high,
+      > #ns-catalog-facets-submit {
         left: 0;
         @include transition-property(left);
         @include transition-duration(.5s);
