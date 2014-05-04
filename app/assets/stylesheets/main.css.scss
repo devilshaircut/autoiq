@@ -378,7 +378,26 @@ input {
   }
 }
 
-#ns-scroll {
+#ns-scroll-1 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include transition-property(translate);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in); 
+  @include transition-delay(0);
+  > section.ns-section-main {
+    height: 100%;
+    min-height: 100%;
+
+    .ns-button.ns-button-red.ns-button-cta {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+#ns-scroll-2 {
   display: block;
   width: 100%;
   height: 100%;
@@ -412,6 +431,20 @@ input {
   @include span-columns(8 omega, 12);
   @include prefix(2);
   @include suffix(2);
+  @include screen-format(phone) {
+    @include span-columns(12 omega, 12);
+    @include prefix(0);
+    @include suffix(0);
+    padding: 0 20px;
+    @include box-sizing(border-box);
+  }
+  @include screen-format(nano) {
+    @include span-columns(12 omega, 12);
+    @include prefix(0);
+    @include suffix(0);
+    padding: 0 20px;
+    @include box-sizing(border-box);
+  }
 }
 
 
@@ -420,13 +453,40 @@ ul#wrapper {
   @include prefix(1);
   @include suffix(1);    
   > li {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: $font-accent;
+    text-transform: uppercase;
     @include span-columns(2, 10);
+    @include screen-format(phone) {
+      margin: 10px 0 20px 0;
+      @include span-columns(5, 12);
+    }
+    @include screen-format(nano) {
+      margin: 10px 0 20px 0;
+      @include span-columns(5, 12);
+    }
     > img {
       width: 100%;
     }
   }
-  li:nth-child(5){
+  li:nth-child(5n){
     @include span-columns(2 omega, 10);
+    @include screen-format(phone) {
+      @include span-columns(5, 12);
+    }
+    @include screen-format(nano) {
+      @include span-columns(5, 12);
+    }
+  }
+  li:nth-child(2n){
+    @include screen-format(phone) {
+      @include span-columns(5 omega, 12);
+    }
+    @include screen-format(nano) {
+      @include span-columns(5 omega, 12);
+    }
   }
 }
 
@@ -458,6 +518,16 @@ ul#wrapper {
     position: relative;
     top: 50%;
     @include translateY(-66%);
+    @include screen-format(phone) {
+      @include span-columns(12 omega, 12);
+      @include prefix(0);
+      @include suffix(0);
+    }
+    @include screen-format(nano) {
+      @include span-columns(12 omega, 12);
+      @include prefix(0);
+      @include suffix(0);
+    }
   }
 }
 
@@ -794,10 +864,12 @@ ol#ns-section-selector.ns-section-shadow-state {
     @include filter(grayscale(100%));
     @include opacity(.5);
     @include screen-format(phone) {
+      display: block;
       top: 0;
       @include translateY(0);
     }
     @include screen-format(nano) {
+      display: block;
       top: 0;
       @include translateY(0);
     }
