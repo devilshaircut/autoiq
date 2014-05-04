@@ -535,6 +535,9 @@ ul#wrapper {
       @include span-columns(5 omega, 12);
     }
   }
+  li:hover {
+    @include opacity(.5);
+  }
 }
 
 
