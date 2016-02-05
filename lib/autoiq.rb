@@ -18,6 +18,7 @@ module Autoiq
         method: :get,
         headers: { "Authorization" => "Bearer #{Autoiq.access_token}"  }
       )
+      binding.pry
       response = request.run
       
       # If request fails, generate new token and re-execute.
